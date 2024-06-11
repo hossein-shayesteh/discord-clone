@@ -5,21 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9ac52e0-5325-4a5d-aeed-3f67d800d249" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/discord-clone.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/utils.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(auth)/(routes)/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(auth)/(routes)/sign-in/[[...sign-in]]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(auth)/(routes)/sign-up/[[...sign-up]]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/test/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/middleware.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +31,9 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2hjiuAj9HGR8NaDdp95TZH1Mq2N" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -43,16 +43,29 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Hossein/Documents/discord-clone/src/app/(main)/(routes)/test",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Hossein\\Documents\\discord-clone\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "settings.editor.selected.configurable": "http.proxy",
+    "ts.external.directory.path": "C:\\Users\\Hossein\\Documents\\discord-clone\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(main)\(routes)\test" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(main)\(routes)" />
+      <recent name="C:\Users\Hossein\Documents\discord-clone\src\app" />
+      <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(routes)" />
+      <recent name="C:\Users\Hossein\Documents\discord-clone\src\lib" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -74,7 +87,7 @@
       <workItem from="1718114111942" duration="712000" />
       <workItem from="1718114841446" duration="36000" />
       <workItem from="1718114891493" duration="697000" />
-      <workItem from="1718115605505" duration="498000" />
+      <workItem from="1718115605505" duration="4704000" />
     </task>
     <servers />
   </component>
