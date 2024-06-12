@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9ac52e0-5325-4a5d-aeed-3f67d800d249" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/(setup)/page.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/components/form/FormInput.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/components/form/FormSubmitButton.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/components/form/FromErrors.tsx" afterDir="false" />
@@ -18,7 +19,7 @@
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(setup)/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/page.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ui/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/button.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +95,7 @@
       <workItem from="1718115605505" duration="8721000" />
       <workItem from="1718211671419" duration="2768000" />
       <workItem from="1718214490300" duration="242000" />
-      <workItem from="1718214806218" duration="6337000" />
+      <workItem from="1718214806218" duration="6636000" />
     </task>
     <servers />
   </component>
