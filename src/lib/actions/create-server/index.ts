@@ -1,29 +1,64 @@
 "use server";
 
 import { auth } from "@clerk/nextjs/server";
-import { revalidatePath } from "next/cache";
+import { v4 as uuid } from "uuid";
+import { MemberRole } from "@prisma/client";
 import { db } from "@/src/lib/database/db";
 import { InputType, ReturnType } from "@/src/lib/actions/create-server/types";
 import { createServerSchema } from "@/src/lib/actions/create-server/schema";
 import createSafeAction from "@/src/lib/actions/create-safe-action";
 
+// Handler function for creating a server
 const handler = async (data: InputType): Promise<ReturnType> => {
-  const { userId, orgId } = auth();
+  // Extracting userId from authentication
+  const { userId } = auth();
 
-  if (!userId || !orgId)
+  // Return error if userId is not found
+  if (!userId)
     return {
-      error: "Unauthorized.",
+      error: "Unauthorized",
     };
 
-  const { title } = data;
+  const { title, imageUrl } = data;
 
+  // Declaring variable to hold server data
   let server;
 
-  try {
-  } catch (e) {
-    return { error: "Failed to copy." };
-  }
+  // Fetching user profile from the database
+  const profile = await db.profile.findUnique({
+    where: { userId },
+  });
 
+  // Return error if user profile is not found
+  if (!profile) return { error: "User not found" };
+
+  try {
+    // Creating a new server record in the database
+    server = await db.server.create({
+      data: {
+        imageUrl,
+        profileId: profile.id,
+        name: title,
+        inviteCode: uuid(),
+        channels: {
+          create: {
+            name: "general",
+            profileId: profile.id,
+          },
+        },
+        members: {
+          create: {
+            profileId: profile.id,
+            role: MemberRole.ADMIN,
+          },
+        },
+      },
+    });
+  } catch (e) {
+    // Return error if server creation fails
+    return { error: "Failed to create" };
+  }
+  // Return created server data upon success
   return { data: server };
 };
 

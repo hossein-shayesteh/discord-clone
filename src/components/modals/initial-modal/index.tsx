@@ -12,10 +12,15 @@ import {
 import { FormInput } from "@/src/components/form/FormInput";
 import FormSubmitButton from "@/src/components/form/FormSubmitButton";
 import FileUpload from "@/src/app/(setup)/_components/fileUpload";
+import { useAction } from "@/src/hooks/use-action";
+import { createServer } from "@/src/lib/actions/create-server";
 
 const InitialModal = () => {
   // State to track if component is mounted
   const [isMounted, setIsMounted] = useState(false);
+
+  // Hook for executing createServer action
+  const { execute } = useAction(createServer);
 
   // Set isMounted to true to prevent hydration errors
   useEffect(() => {
@@ -26,8 +31,8 @@ const InitialModal = () => {
   const onSubmit = async (formData: FormData) => {
     const title = formData.get("title") as string;
     const imageUrl = formData.get("imageUrl") as string;
-    console.log(imageUrl);
-    // TODO: submit form
+
+    await execute({ title, imageUrl });
   };
 
   // Render nothing if component is not mounted yet
