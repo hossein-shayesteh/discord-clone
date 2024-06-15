@@ -4,6 +4,9 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
+import { extractRouterConfig } from "uploadthing/server";
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { ourFileRouter } from "@/src/app/api/uploadthing/core";
 import { ThemeProvider } from "@/src/components/providers/ThemeProvider";
 import { cn } from "@/src/lib/utils";
 
@@ -29,6 +32,7 @@ export default function RootLayout({
             enableSystem={false}
             storageKey={"discord-theme"}
           >
+            <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
             {children}
           </ThemeProvider>
         </body>

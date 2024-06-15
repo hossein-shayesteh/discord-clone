@@ -11,6 +11,7 @@ import {
 } from "@/src/components/ui/dialog";
 import { FormInput } from "@/src/components/form/FormInput";
 import FormSubmitButton from "@/src/components/form/FormSubmitButton";
+import FileUpload from "@/src/app/(setup)/_components/fileUpload";
 
 const InitialModal = () => {
   // State to track if component is mounted
@@ -24,6 +25,8 @@ const InitialModal = () => {
   // Function to handle form submission
   const onSubmit = async (formData: FormData) => {
     const title = formData.get("title") as string;
+    const imageUrl = formData.get("imageUrl") as string;
+    console.log(imageUrl);
     // TODO: submit form
   };
 
@@ -45,11 +48,16 @@ const InitialModal = () => {
         <form action={onSubmit} className={"space-y-8"}>
           <div className={"space-y-8 px-6"}>
             <div className={"flex items-center justify-center text-center"}>
-              TODO: Upload image
+              <FileUpload
+                id={"imageUrl"}
+                endpoint={"imageUploader"}
+                onUploadError={() => {}}
+                onUploadComplete={() => {}}
+              />
             </div>
             <FormInput
               id={"title"}
-              label={"server name"}
+              label={"SERVER NAME"}
               className={
                 "border-0 bg-zinc-300/50 text-black focus-visible:ring-0 focus-visible:ring-offset-0"
               }
