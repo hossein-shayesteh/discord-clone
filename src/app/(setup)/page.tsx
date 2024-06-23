@@ -1,10 +1,10 @@
-import { initialProfile } from "@/src/lib/auth/initial-profile";
+import { currentProfile } from "@/src/lib/auth/current-profile";
 import { db } from "@/src/lib/database/db";
 import { redirect } from "next/navigation";
 import InitialModal from "@/src/components/modals/initial-modal";
 
 const Home = async () => {
-  const profile = await initialProfile();
+  const profile = await currentProfile();
 
   const server = await db.server.findFirst({
     where: {
