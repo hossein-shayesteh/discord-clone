@@ -3,6 +3,9 @@ import NavigationAction from "@/src/components/navigation/NavigationAction";
 import { Separator } from "@/src/components/ui/separator";
 import { ScrollArea } from "@/src/components/ui/scroll-area";
 import NavigationItem from "@/src/components/navigation/NavigationItem";
+import { ModeToggle } from "@/src/components/ui/mode-toggle";
+import { UserButton } from "@clerk/nextjs";
+import { element } from "prop-types";
 
 const NavigationSidebar = async () => {
   const servers = await fetchServers();
@@ -29,6 +32,15 @@ const NavigationSidebar = async () => {
           />
         ))}
       </ScrollArea>
+      <div className={"mt-auto flex flex-col items-center gap-y-4 pb-3"}>
+        <ModeToggle />
+        <UserButton
+          afterSignOutUrl={"/"}
+          appearance={{
+            elements: { avatarBox: { width: "48px", height: "48px" } },
+          }}
+        />
+      </div>
     </div>
   );
 };

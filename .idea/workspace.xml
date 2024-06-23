@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9ac52e0-5325-4a5d-aeed-3f67d800d249" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/navigation/NavigationAction.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/navigation/NavigationItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/navigation/NavigationSidebar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/action-tooltip.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/scroll-area.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/separator.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/tooltip.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/database/fetch-servers.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(setup)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(setup)/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/auth/initial-profile.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/auth/current-profile.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navigation/NavigationSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation/NavigationSidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/mode-toggle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/mode-toggle.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +104,7 @@
       <workItem from="1718303524866" duration="8784000" />
       <workItem from="1718462832502" duration="471000" />
       <workItem from="1718463915870" duration="4168000" />
-      <workItem from="1719123190064" duration="7259000" />
+      <workItem from="1719123190064" duration="8184000" />
     </task>
     <servers />
   </component>
