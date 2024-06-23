@@ -5,7 +5,6 @@ import { ScrollArea } from "@/src/components/ui/scroll-area";
 import NavigationItem from "@/src/components/navigation/NavigationItem";
 import { ModeToggle } from "@/src/components/ui/mode-toggle";
 import { UserButton } from "@clerk/nextjs";
-import { element } from "prop-types";
 
 const NavigationSidebar = async () => {
   const servers = await fetchServers();

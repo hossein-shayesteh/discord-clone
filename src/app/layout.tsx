@@ -7,8 +7,9 @@ import { Open_Sans } from "next/font/google";
 import { extractRouterConfig } from "uploadthing/server";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { ourFileRouter } from "@/src/app/api/uploadthing/core";
-import { ThemeProvider } from "@/src/components/providers/ThemeProvider";
 import { cn } from "@/src/lib/utils";
+import { ThemeProvider } from "@/src/components/providers/ThemeProvider";
+import ModalProvider from "@/src/components/providers/ModalProvider";
 
 const openSans = Open_Sans({ subsets: ["latin"] });
 
@@ -34,6 +35,7 @@ export default function RootLayout({
           >
             <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
             {children}
+            <ModalProvider />
           </ThemeProvider>
         </body>
       </html>
