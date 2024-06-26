@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import CreateServerModal from "@/src/components/modals/create-server-modal";
+import InviteModal from "@/src/components/modals/invite-modal";
 
 // Component to manage modal rendering on the client side
 const ModalProvider = () => {
@@ -18,6 +19,7 @@ const ModalProvider = () => {
   return (
     <>
       <CreateServerModal />
+      <InviteModal />
     </>
   );
 };

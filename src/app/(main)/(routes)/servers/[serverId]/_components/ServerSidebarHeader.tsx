@@ -18,6 +18,7 @@ import {
   UserPlus,
   Users,
 } from "lucide-react";
+import { useModal } from "@/src/hooks/useModal";
 
 interface ServerSidebarHeaderProps {
   role: MemberRole;
@@ -25,6 +26,8 @@ interface ServerSidebarHeaderProps {
 }
 
 const ServerSidebarHeader = ({ role, server }: ServerSidebarHeaderProps) => {
+  const { onOpen } = useModal();
+
   const isAdmin = role === MemberRole.ADMIN;
   const isModerator = isAdmin || role === MemberRole.MODERATOR;
 
@@ -47,6 +50,8 @@ const ServerSidebarHeader = ({ role, server }: ServerSidebarHeaderProps) => {
       >
         {isModerator && (
           <DropdownMenuItem
+            // Open invite modal
+            onClick={() => onOpen("invite", { server })}
             className={
               "cursor-pointer px-3 py-2 text-sm text-indigo-600 dark:text-indigo-400"
             }
