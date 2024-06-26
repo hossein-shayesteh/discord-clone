@@ -17,13 +17,16 @@ import { createServer } from "@/src/lib/actions/create-server";
 import { useModal } from "@/src/hooks/useModal";
 
 const CreateServerModal = () => {
-  // Ref for the form element
   const formRef = useRef<ElementRef<"form">>(null);
 
   const { isOpen, onClose, type } = useModal();
 
   // Hook for executing createServer action
-  const { execute } = useAction(createServer);
+  const { execute } = useAction(createServer, {
+    onSuccess: () => {
+      onClose();
+    },
+  });
 
   // Function to handle form submission
   const onSubmit = async (formData: FormData) => {

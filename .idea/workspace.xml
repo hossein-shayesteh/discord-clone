@@ -5,16 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9ac52e0-5325-4a5d-aeed-3f67d800d249" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/modals/create-server-modal/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/providers/ModalProvider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/useModal.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerSidebar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerSidebarHeader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/database/fetch-server.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/db.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navigation/NavigationAction.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation/NavigationAction.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navigation/NavigationSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation/NavigationSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/mode-toggle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/mode-toggle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modals/create-server-modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/create-server-modal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navigation/NavigationAction.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/_components/NavigationAction.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navigation/NavigationItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/_components/NavigationItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navigation/NavigationSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/_components/NavigationSidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/actions/create-server/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/actions/create-server/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/database/fetch-servers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/database/fetch-servers.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,35 +39,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Hossein/Documents/discord-clone/src/components/modals",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.dev.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Hossein\\Documents\\discord-clone\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "http.proxy",
-    "ts.external.directory.path": "C:\\Users\\Hossein\\Documents\\discord-clone\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Hossein/Documents/discord-clone/src/components/modals&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Hossein\\Documents\\discord-clone\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;http.proxy&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Hossein\\Documents\\discord-clone\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\components\modals" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(main)\(routes)\test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(main)\(routes)\_components" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(setup)" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(main)\(routes)" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\app" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(routes)" />
-      <recent name="C:\Users\Hossein\Documents\discord-clone\src\lib" />
     </key>
   </component>
   <component name="RunManager">
@@ -112,7 +115,8 @@
       <workItem from="1718303524866" duration="8784000" />
       <workItem from="1718462832502" duration="471000" />
       <workItem from="1718463915870" duration="4168000" />
-      <workItem from="1719123190064" duration="11102000" />
+      <workItem from="1719123190064" duration="12686000" />
+      <workItem from="1719386818449" duration="7697000" />
     </task>
     <servers />
   </component>

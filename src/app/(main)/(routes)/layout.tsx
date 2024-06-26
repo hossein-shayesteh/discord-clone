@@ -1,11 +1,11 @@
 import React from "react";
-import NavigationSidebar from "@/src/components/navigation/NavigationSidebar";
+import NavigationSidebar from "@/src/app/(main)/(routes)/_components/NavigationSidebar";
 
-const MainLayout = ({
-  children,
-}: Readonly<{
+interface MainLayoutProps {
   children: React.ReactNode;
-}>) => {
+}
+
+const MainLayout = ({ children }: Readonly<MainLayoutProps>) => {
   return (
     <div className={"h-full"}>
       <div

@@ -1,8 +1,8 @@
 import { fetchServers } from "@/src/lib/database/fetch-servers";
-import NavigationAction from "@/src/components/navigation/NavigationAction";
+import NavigationAction from "@/src/app/(main)/(routes)/_components/NavigationAction";
 import { Separator } from "@/src/components/ui/separator";
 import { ScrollArea } from "@/src/components/ui/scroll-area";
-import NavigationItem from "@/src/components/navigation/NavigationItem";
+import NavigationItem from "@/src/app/(main)/(routes)/_components/NavigationItem";
 import { ModeToggle } from "@/src/components/ui/mode-toggle";
 import { UserButton } from "@clerk/nextjs";
 
