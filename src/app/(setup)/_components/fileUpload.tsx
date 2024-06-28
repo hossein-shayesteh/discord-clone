@@ -9,6 +9,7 @@ import { UploadDropzone } from "@/src/lib/uploadthing";
 interface FileUploadProps {
   id: string;
   endpoint: "imageUploader";
+  image?: string;
   onUploadComplete: (url?: string) => void;
   onUploadError: (error: Error) => void;
 }
@@ -16,10 +17,11 @@ interface FileUploadProps {
 const FileUpload = ({
   id,
   endpoint,
+  image,
   onUploadComplete,
   onUploadError,
 }: FileUploadProps) => {
-  const [imageUrl, setImageUrl] = useState<string | undefined>(undefined);
+  const [imageUrl, setImageUrl] = useState<string | undefined>(image);
 
   // If an image URL is available, render the uploaded image
   if (imageUrl)

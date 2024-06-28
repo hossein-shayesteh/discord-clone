@@ -61,7 +61,11 @@ const ServerSidebarHeader = ({ role, server }: ServerSidebarHeaderProps) => {
           </DropdownMenuItem>
         )}
         {isAdmin && (
-          <DropdownMenuItem className={"cursor-pointer px-3 py-2 text-sm"}>
+          <DropdownMenuItem
+            // Open edit server modal
+            onClick={() => onOpen("editServer", { server })}
+            className={"cursor-pointer px-3 py-2 text-sm"}
+          >
             Server Settings
             <Settings className={"ml-auto h-4 w-4"} />
           </DropdownMenuItem>
