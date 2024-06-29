@@ -20,7 +20,7 @@ const InitialModal = () => {
   const [isMounted, setIsMounted] = useState(false);
 
   // Hook for executing createServer action
-  const { execute } = useAction(createServer);
+  const { execute, fieldErrors } = useAction(createServer);
 
   // Set isMounted to true to prevent hydration errors
   useEffect(() => {
@@ -62,6 +62,7 @@ const InitialModal = () => {
             </div>
             <FormInput
               id={"title"}
+              errors={fieldErrors}
               label={"SERVER NAME"}
               className={
                 "border-0 bg-zinc-300/50 text-black focus-visible:ring-0 focus-visible:ring-offset-0"

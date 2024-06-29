@@ -22,7 +22,7 @@ const CreateServerModal = () => {
   const { isOpen, onClose, type } = useModal();
 
   // Hook for executing createServer action
-  const { execute } = useAction(createServer, {
+  const { execute, fieldErrors } = useAction(createServer, {
     onSuccess: () => {
       onClose();
     },
@@ -66,6 +66,7 @@ const CreateServerModal = () => {
             </div>
             <FormInput
               id={"title"}
+              errors={fieldErrors}
               label={"SERVER NAME"}
               className={
                 "border-0 bg-zinc-300/50 text-black focus-visible:ring-0 focus-visible:ring-offset-0"
