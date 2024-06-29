@@ -60,7 +60,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     return { error: "Failed to create" };
   }
 
-  // Revalidating the cache for the board path
+  // Revalidating the cache for path
   revalidatePath(`/servers/${server.id}`);
 
   // Return created server data upon success
