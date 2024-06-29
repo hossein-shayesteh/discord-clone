@@ -6,6 +6,7 @@ import { db } from "@/src/lib/database/db";
 import { InputType, ReturnType } from "@/src/lib/actions/edit-server/types";
 import { editServerSchema } from "@/src/lib/actions/edit-server/schema";
 import createSafeAction from "@/src/lib/actions/create-safe-action";
+import { MemberRole } from "@prisma/client";
 
 // Handler function for editing a server
 const handler = async (data: InputType): Promise<ReturnType> => {
@@ -38,7 +39,12 @@ const handler = async (data: InputType): Promise<ReturnType> => {
         id,
         members: {
           some: {
-            profileId: profile.id,
+            profile: {
+              id: profile.id,
+            },
+            role: {
+              in: [MemberRole.ADMIN],
+            },
           },
         },
       },

@@ -10,6 +10,7 @@ import {
 } from "@/src/lib/actions/update-invite-link/types";
 import { updateInviteLinkSchema } from "@/src/lib/actions/update-invite-link/schema";
 import createSafeAction from "@/src/lib/actions/create-safe-action";
+import { MemberRole } from "@prisma/client";
 
 // Handler function for updating a server invite link
 const handler = async (data: InputType): Promise<ReturnType> => {
@@ -40,7 +41,16 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     server = await db.server.update({
       where: {
         id: serverId,
-        profileId: profile.id,
+        members: {
+          some: {
+            profile: {
+              id: profile.id,
+            },
+            role: {
+              in: [MemberRole.ADMIN, MemberRole.MODERATOR],
+            },
+          },
+        },
       },
       data: {
         inviteCode: uuid(),
