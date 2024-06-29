@@ -101,6 +101,8 @@ const ServerSidebarHeader = ({ role, server }: ServerSidebarHeaderProps) => {
         )}
         {!isAdmin && (
           <DropdownMenuItem
+            // Open server members modal
+            onClick={() => onOpen("leaveServer", { server })}
             className={"cursor-pointer px-3 py-2 text-sm text-rose-500"}
           >
             Leave Server

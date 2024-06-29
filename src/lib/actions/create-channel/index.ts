@@ -8,7 +8,7 @@ import { createChannelSchema } from "@/src/lib/actions/create-channel/schema";
 import createSafeAction from "@/src/lib/actions/create-safe-action";
 import { MemberRole } from "@prisma/client";
 
-// Handler function for creating a server
+// Handler function for action
 const handler = async (data: InputType): Promise<ReturnType> => {
   // Extracting userId from authentication
   const { userId } = auth();
@@ -58,7 +58,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       },
     });
   } catch (e) {
-    // Return error if server creation fails
+    // Return error if action fails
     return { error: "Failed to create" };
   }
 

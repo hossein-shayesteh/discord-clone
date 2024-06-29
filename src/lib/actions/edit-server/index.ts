@@ -8,7 +8,7 @@ import { editServerSchema } from "@/src/lib/actions/edit-server/schema";
 import createSafeAction from "@/src/lib/actions/create-safe-action";
 import { MemberRole } from "@prisma/client";
 
-// Handler function for editing a server
+// Handler function for action
 const handler = async (data: InputType): Promise<ReturnType> => {
   // Extracting userId from authentication
   const { userId } = auth();
@@ -54,7 +54,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       },
     });
   } catch (e) {
-    // Return error if server editing fails
+    // Return error if action fails
     return { error: "Failed to edit" };
   }
 

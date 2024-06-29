@@ -9,7 +9,7 @@ import { InputType, ReturnType } from "@/src/lib/actions/create-server/types";
 import { createServerSchema } from "@/src/lib/actions/create-server/schema";
 import createSafeAction from "@/src/lib/actions/create-safe-action";
 
-// Handler function for creating a server
+// Handler function for action
 const handler = async (data: InputType): Promise<ReturnType> => {
   // Extracting userId from authentication
   const { userId } = auth();
@@ -56,7 +56,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       },
     });
   } catch (e) {
-    // Return error if server creation fails
+    // Return error if action fails
     return { error: "Failed to create" };
   }
 

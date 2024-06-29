@@ -2,11 +2,11 @@
 
 import { revalidatePath } from "next/cache";
 import { auth } from "@clerk/nextjs/server";
-import { db } from "@/src/lib/database/db";
-import { InputType, ReturnType } from "@/src/lib/actions/delete-member/types";
-import { deleteMemberSchema } from "@/src/lib/actions/delete-member/schema";
-import createSafeAction from "@/src/lib/actions/create-safe-action";
 import { MemberRole } from "@prisma/client";
+import { db } from "@/src/lib/database/db";
+import { InputType, ReturnType } from "@/src/lib/actions/leave-server/types";
+import { leaveServerSchema } from "@/src/lib/actions/leave-server/schema";
+import createSafeAction from "@/src/lib/actions/create-safe-action";
 
 // Handler function for action
 const handler = async (data: InputType): Promise<ReturnType> => {
@@ -19,7 +19,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       error: "Unauthorized",
     };
 
-  const { memberId, serverId } = data;
+  const { serverId } = data;
 
   // Declaring variable to hold server data
   let server;
@@ -42,40 +42,22 @@ const handler = async (data: InputType): Promise<ReturnType> => {
               id: profile.id,
             },
             role: {
-              in: [MemberRole.ADMIN],
+              notIn: [MemberRole.ADMIN],
             },
           },
         },
       },
       data: {
         members: {
-          delete: {
-            id: memberId,
-            profileId: {
-              not: profile.id,
-            },
-          },
-        },
-      },
-      include: {
-        channels: {
-          orderBy: {
-            createdAt: "desc",
-          },
-        },
-        members: {
-          include: {
-            profile: true,
-          },
-          orderBy: {
-            role: "asc",
+          deleteMany: {
+            profileId: profile.id,
           },
         },
       },
     });
   } catch (e) {
     // Return error if action fails
-    return { error: "Failed to delete" };
+    return { error: "Failed to leave" };
   }
 
   // Revalidating the cache for path
@@ -85,4 +67,4 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   return { data: server };
 };
 
-export const deleteMember = createSafeAction(deleteMemberSchema, handler);
+export const leaveServer = createSafeAction(leaveServerSchema, handler);

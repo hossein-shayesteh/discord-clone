@@ -12,7 +12,7 @@ import { updateInviteLinkSchema } from "@/src/lib/actions/update-invite-link/sch
 import createSafeAction from "@/src/lib/actions/create-safe-action";
 import { MemberRole } from "@prisma/client";
 
-// Handler function for updating a server invite link
+// Handler function for action
 const handler = async (data: InputType): Promise<ReturnType> => {
   // Extracting userId from authentication
   const { userId } = auth();
@@ -57,7 +57,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       },
     });
   } catch (e) {
-    // Return error if server creation fails
+    // Return error if action fails
     return { error: "Failed to create" };
   }
 
