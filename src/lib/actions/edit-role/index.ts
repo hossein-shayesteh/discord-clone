@@ -2,16 +2,12 @@
 
 import { revalidatePath } from "next/cache";
 import { auth } from "@clerk/nextjs/server";
-import { v4 as uuid } from "uuid";
 import { db } from "@/src/lib/database/db";
-import {
-  InputType,
-  ReturnType,
-} from "@/src/lib/actions/update-invite-link/types";
-import { updateInviteLinkSchema } from "@/src/lib/actions/update-invite-link/schema";
+import { InputType, ReturnType } from "@/src/lib/actions/edit-role/types";
+import { editRoleSchema } from "@/src/lib/actions/edit-role/schema";
 import createSafeAction from "@/src/lib/actions/create-safe-action";
 
-// Handler function for updating a server invite link
+// Handler function for editing a role
 const handler = async (data: InputType): Promise<ReturnType> => {
   // Extracting userId from authentication
   const { userId } = auth();
@@ -22,7 +18,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       error: "Unauthorized",
     };
 
-  const { serverId } = data;
+  const { memberId, serverId, role } = data;
 
   // Declaring variable to hold server data
   let server;
@@ -36,19 +32,48 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   if (!profile) return { error: "User not found" };
 
   try {
-    // Creating a new server record in the database
     server = await db.server.update({
       where: {
         id: serverId,
-        profileId: profile.id,
+        members: {
+          some: {
+            profileId: profile.id,
+            role: "ADMIN",
+          },
+        },
       },
       data: {
-        inviteCode: uuid(),
+        members: {
+          update: {
+            where: {
+              id: memberId,
+              serverId: serverId,
+            },
+            data: {
+              role,
+            },
+          },
+        },
+      },
+      include: {
+        channels: {
+          orderBy: {
+            createdAt: "desc",
+          },
+        },
+        members: {
+          include: {
+            profile: true,
+          },
+          orderBy: {
+            role: "asc",
+          },
+        },
       },
     });
   } catch (e) {
-    // Return error if server creation fails
-    return { error: "Failed to create" };
+    // Return error if server editing fails
+    return { error: "Failed to edit" };
   }
 
   // Revalidating the cache for path
@@ -58,7 +83,4 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   return { data: server };
 };
 
-export const updateInviteLink = createSafeAction(
-  updateInviteLinkSchema,
-  handler,
-);
+export const editRole = createSafeAction(editRoleSchema, handler);

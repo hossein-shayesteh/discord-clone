@@ -1,17 +1,18 @@
 "use client";
 
-import { useState } from "react";
 import {
   Check,
   Gavel,
-  Loader2,
   MoreVertical,
   Shield,
   ShieldAlert,
   ShieldCheck,
   ShieldQuestion,
 } from "lucide-react";
+import { MemberRole } from "@prisma/client";
 import { useModal } from "@/src/hooks/useModal";
+import { useAction } from "@/src/hooks/use-action";
+import { editRole } from "@/src/lib/actions/edit-role";
 import { ServerWithMembersWithProfiles } from "@/src/types/db";
 import {
   Dialog,
@@ -41,14 +42,29 @@ const roleIconMap = {
 };
 
 const ServerMembersModal = () => {
-  const [loadingId, setLoadingId] = useState("");
-  const { isOpen, onClose, type, data } = useModal();
+  const { onOpen, isOpen, onClose, type, data } = useModal();
 
   const { server } = data as { server: ServerWithMembersWithProfiles };
+
+  // Hook for executing "editRole" action
+  const { execute } = useAction(editRole, {
+    onSuccess: (data) => {
+      onOpen("serverMembers", { server: data });
+    },
+  });
 
   // Function to handle modal closure
   const handleClose = () => {
     onClose();
+  };
+
+  // Function to handle role changes
+  const onRoleChange = async (
+    memberId: string,
+    serverId: string,
+    role: MemberRole,
+  ) => {
+    await execute({ role, memberId, serverId });
   };
 
   return (
@@ -78,53 +94,53 @@ const ServerMembersModal = () => {
                   {member.profile.email}
                 </p>
               </div>
-              {server.profileId !== member.profileId &&
-                loadingId !== member.id && (
-                  <div className={"ml-auto"}>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger>
-                        <MoreVertical className={"h-4 w-4 text-zinc-500"} />
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent side={"left"}>
-                        <DropdownMenuSub>
-                          <DropdownMenuSubTrigger
-                            className={"flex items-center"}
-                          >
-                            <ShieldQuestion className={"mr-2 h-4 w-4"} />
-                            <span>Role</span>
-                          </DropdownMenuSubTrigger>
-                          <DropdownMenuPortal>
-                            <DropdownMenuSubContent>
-                              <DropdownMenuItem>
-                                <Shield className={"mr-2 h-4 w-4"} />
-                                Guest
-                                {member.role === "GUEST" && (
-                                  <Check className={"ml-auto h-4 w-4"} />
-                                )}
-                              </DropdownMenuItem>
-                              <DropdownMenuItem>
-                                <ShieldCheck className={"mr-2 h-4 w-4"} />
-                                Moderator
-                                {member.role === "MODERATOR" && (
-                                  <Check className={"ml-auto h-4 w-4"} />
-                                )}
-                              </DropdownMenuItem>
-                            </DropdownMenuSubContent>
-                          </DropdownMenuPortal>
-                        </DropdownMenuSub>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem className={""}>
-                          <Gavel className={"mr-2 h-4 w-4"} />
-                          Kick
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </div>
-                )}
-              {loadingId === member.id && (
-                <Loader2
-                  className={"ml-auto h-4 w-4 animate-spin text-zinc-500"}
-                />
+              {server.profileId !== member.profileId && (
+                <div className={"ml-auto"}>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger>
+                      <MoreVertical className={"h-4 w-4 text-zinc-500"} />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent side={"left"}>
+                      <DropdownMenuSub>
+                        <DropdownMenuSubTrigger className={"flex items-center"}>
+                          <ShieldQuestion className={"mr-2 h-4 w-4"} />
+                          <span>Role</span>
+                        </DropdownMenuSubTrigger>
+                        <DropdownMenuPortal>
+                          <DropdownMenuSubContent>
+                            <DropdownMenuItem
+                              onClick={() =>
+                                onRoleChange(member.id, server.id, "GUEST")
+                              }
+                            >
+                              <Shield className={"mr-2 h-4 w-4"} />
+                              Guest
+                              {member.role === "GUEST" && (
+                                <Check className={"ml-auto h-4 w-4"} />
+                              )}
+                            </DropdownMenuItem>
+                            <DropdownMenuItem
+                              onClick={() =>
+                                onRoleChange(member.id, server.id, "MODERATOR")
+                              }
+                            >
+                              <ShieldCheck className={"mr-2 h-4 w-4"} />
+                              Moderator
+                              {member.role === "MODERATOR" && (
+                                <Check className={"ml-auto h-4 w-4"} />
+                              )}
+                            </DropdownMenuItem>
+                          </DropdownMenuSubContent>
+                        </DropdownMenuPortal>
+                      </DropdownMenuSub>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem className={""}>
+                        <Gavel className={"mr-2 h-4 w-4"} />
+                        Kick
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
               )}
             </div>
           ))}
@@ -133,4 +149,5 @@ const ServerMembersModal = () => {
     </Dialog>
   );
 };
+
 export default ServerMembersModal;
