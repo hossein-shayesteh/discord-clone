@@ -93,6 +93,8 @@ const ServerSidebarHeader = ({ role, server }: ServerSidebarHeaderProps) => {
         {isModerator && <DropdownMenuSeparator />}
         {isAdmin && (
           <DropdownMenuItem
+            // Open delete server modal
+            onClick={() => onOpen("deleteServer", { server })}
             className={"cursor-pointer px-3 py-2 text-sm text-rose-500"}
           >
             Delete Server
@@ -101,7 +103,7 @@ const ServerSidebarHeader = ({ role, server }: ServerSidebarHeaderProps) => {
         )}
         {!isAdmin && (
           <DropdownMenuItem
-            // Open server members modal
+            // Open leaver server modal
             onClick={() => onOpen("leaveServer", { server })}
             className={"cursor-pointer px-3 py-2 text-sm text-rose-500"}
           >

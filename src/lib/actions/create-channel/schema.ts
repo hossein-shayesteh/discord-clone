@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { ChannelType } from "@prisma/client";
 
-// Define schema for creating a channel using Zod
+// Define schema for action using Zod
 export const createChannelSchema = z.object({
   title: z
     .string({

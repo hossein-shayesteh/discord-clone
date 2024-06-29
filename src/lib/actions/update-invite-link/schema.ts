@@ -1,7 +1,6 @@
 import { z } from "zod";
 
-// Define schema for updating a server invite code
+// Define schema for action using Zod
 export const updateInviteLinkSchema = z.object({
-  // Define 'serverId' property with validation
   serverId: z.string(),
 });

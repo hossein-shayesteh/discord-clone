@@ -2,7 +2,7 @@
 
 import { useModal } from "@/src/hooks/useModal";
 import { useAction } from "@/src/hooks/use-action";
-import { leaveServer } from "@/src/lib/actions/leave-server";
+import { deleteServer } from "@/src/lib/actions/delete-server";
 import {
   Dialog,
   DialogTitle,
@@ -13,13 +13,13 @@ import {
 } from "@/src/components/ui/dialog";
 import { Button } from "@/src/components/ui/button";
 
-const LeaveServerModal = () => {
+const DeleteServerModal = () => {
   const { isOpen, onClose, type, data } = useModal();
 
   const { server } = data;
 
-  // Hook for executing 'leaveServer' action
-  const { execute, isLoading } = useAction(leaveServer, {
+  // Hook for executing 'deleteServer' action
+  const { execute, isLoading } = useAction(deleteServer, {
     onSuccess: () => {
       onClose();
     },
@@ -31,19 +31,19 @@ const LeaveServerModal = () => {
   };
 
   // Function to handle leave server
-  const onLeave = async () => {
+  const onDelete = async () => {
     await execute({ serverId: server!.id });
   };
 
   return (
-    <Dialog open={isOpen && type === "leaveServer"} onOpenChange={handleClose}>
+    <Dialog open={isOpen && type === "deleteServer"} onOpenChange={handleClose}>
       <DialogContent className={"overflow-hidden bg-white p-0 text-black"}>
         <DialogHeader className={"px-6 pt-8"}>
           <DialogTitle className={"text-center text-2xl font-bold"}>
-            Leave server
+            Delete server
           </DialogTitle>
           <DialogDescription className={"text-center text-zinc-500"}>
-            Are you sure you want to leave{" "}
+            Are you sure you want to delete{" "}
             <span className={"font-semibold text-indigo-500"}>
               {server?.name}
             </span>
@@ -59,7 +59,7 @@ const LeaveServerModal = () => {
             >
               Cancel
             </Button>
-            <Button variant={"primary"} onClick={onLeave} disabled={isLoading}>
+            <Button variant={"primary"} onClick={onDelete} disabled={isLoading}>
               Confirm
             </Button>
           </div>
@@ -68,4 +68,4 @@ const LeaveServerModal = () => {
     </Dialog>
   );
 };
-export default LeaveServerModal;
+export default DeleteServerModal;

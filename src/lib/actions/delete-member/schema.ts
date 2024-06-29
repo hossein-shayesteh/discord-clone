@@ -1,7 +1,6 @@
 import { z } from "zod";
-import { MemberRole } from "@prisma/client";
 
-// Define schema for deleting members
+// Define schema for action using Zod
 export const deleteMemberSchema = z.object({
   memberId: z.string(),
   serverId: z.string(),
