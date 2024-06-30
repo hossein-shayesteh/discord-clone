@@ -16,7 +16,7 @@ import {
 interface ServerSearchProps {
   data: {
     label: string;
-    type: "member" | "channel";
+    type: "members" | "channel";
     data: {
       id: string;
       name: string;
@@ -49,11 +49,11 @@ const ServerSearch = ({ data }: ServerSearchProps) => {
     type,
   }: {
     id: string;
-    type: "member" | "channel";
+    type: "members" | "channel";
   }) => {
     if (type === "channel")
       router.push(`/servers/${params.serverId}/channels/${id}`);
-    if (type === "member")
+    if (type === "members")
       router.push(`/servers/${params.serverId}/conversation/${id}`);
   };
 

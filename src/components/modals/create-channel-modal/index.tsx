@@ -1,6 +1,6 @@
 "use client";
 
-import { ElementRef, useRef, useState } from "react";
+import { ElementRef, useEffect, useRef, useState } from "react";
 import { useModal } from "@/src/hooks/useModal";
 import { useAction } from "@/src/hooks/use-action";
 import {
@@ -34,6 +34,12 @@ const CreateChannelModal = () => {
   const { isOpen, onClose, type, data } = useModal();
 
   const { server } = data as { server: ServerWithMembersWithProfiles };
+
+  const { channelType: initialChannelType } = data;
+
+  useEffect(() => {
+    setChannelType(initialChannelType!);
+  }, [initialChannelType]);
 
   // Hook for executing createChannel action
   const { execute, fieldErrors } = useAction(createChannel, {
@@ -88,7 +94,7 @@ const CreateChannelModal = () => {
                   ENTER CHANNEL NAME
                 </Label>
                 <Select
-                  defaultValue={"TEXT"}
+                  defaultValue={channelType}
                   onValueChange={(value: "TEXT" | "AUDIO" | "VIDEO") =>
                     setChannelType(value)
                   }

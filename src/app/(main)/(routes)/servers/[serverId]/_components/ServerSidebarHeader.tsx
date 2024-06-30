@@ -83,7 +83,9 @@ const ServerSidebarHeader = ({ role, server }: ServerSidebarHeaderProps) => {
         {isModerator && (
           <DropdownMenuItem
             // Open server create channel modal
-            onClick={() => onOpen("createChannel", { server })}
+            onClick={() =>
+              onOpen("createChannel", { server, channelType: "TEXT" })
+            }
             className={"cursor-pointer px-3 py-2 text-sm"}
           >
             Create Channel
