@@ -2,7 +2,7 @@
 
 import { useModal } from "@/src/hooks/useModal";
 import { useAction } from "@/src/hooks/use-action";
-import { deleteServer } from "@/src/lib/actions/delete-server";
+import { deleteChannel } from "@/src/lib/actions/delete-channel";
 import {
   Dialog,
   DialogTitle,
@@ -13,13 +13,13 @@ import {
 } from "@/src/components/ui/dialog";
 import { Button } from "@/src/components/ui/button";
 
-const DeleteServerModal = () => {
+const DeleteChannelModal = () => {
   const { isOpen, onClose, type, data } = useModal();
 
-  const { server } = data;
+  const { server, channel } = data;
 
-  // Hook for executing 'deleteServer' action
-  const { execute, isLoading } = useAction(deleteServer, {
+  // Hook for executing 'deleteChannel' action
+  const { execute, isLoading } = useAction(deleteChannel, {
     onSuccess: () => {
       onClose();
     },
@@ -30,23 +30,26 @@ const DeleteServerModal = () => {
     onClose();
   };
 
-  // Function to handle leave server
+  // Function to handle delete channel
   const onDelete = async () => {
-    await execute({ serverId: server!.id });
+    await execute({ serverId: server!.id, channelId: channel!.id });
   };
 
   return (
-    <Dialog open={isOpen && type === "deleteServer"} onOpenChange={handleClose}>
+    <Dialog
+      open={isOpen && type === "deleteChannel"}
+      onOpenChange={handleClose}
+    >
       <DialogContent className={"overflow-hidden bg-white p-0 text-black"}>
         <DialogHeader className={"px-6 pt-8"}>
           <DialogTitle className={"text-center text-2xl font-bold"}>
-            Delete server
+            Delete Channel
           </DialogTitle>
           <DialogDescription className={"text-center text-zinc-500"}>
             <p className={"mt-2"}>Are you sure you want to do this?</p>
             <p>
               <span className={"font-semibold text-indigo-500"}>
-                {server?.name}
+                #{channel?.name}
               </span>{" "}
               will be permanently deleted.
             </p>
@@ -70,4 +73,4 @@ const DeleteServerModal = () => {
     </Dialog>
   );
 };
-export default DeleteServerModal;
+export default DeleteChannelModal;

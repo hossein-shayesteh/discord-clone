@@ -5,14 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9ac52e0-5325-4a5d-aeed-3f67d800d249" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerChannel.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerMember.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerSection.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modals/delete-channel-modal/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/actions/delete-channel/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/actions/delete-channel/schema.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/actions/delete-channel/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerSearch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerSearch.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerSidebarHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerSidebarHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modals/create-channel-modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/create-channel-modal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerChannel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerChannel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modals/delete-server-modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/delete-server-modal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/providers/ModalProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/providers/ModalProvider.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hooks/useModal.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useModal.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +40,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Hossein/Documents/discord-clone/src/app/(main)/(routes)/servers/[serverId]/_components",
+    "last_opened_file_path": "C:/Users/Hossein/Documents/discord-clone/src/lib/actions",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -55,9 +55,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(main)\(routes)\servers\[serverId]\_components" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\lib\actions" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\components\modals" />
+      <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(main)\(routes)\servers\[serverId]\_components" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(main)\(routes)\test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -120,7 +120,8 @@
       <workItem from="1719647665414" duration="13276000" />
       <workItem from="1719661333855" duration="2625000" />
       <workItem from="1719677388870" duration="10100000" />
-      <workItem from="1719762564585" duration="9691000" />
+      <workItem from="1719762564585" duration="10035000" />
+      <workItem from="1719942805773" duration="2109000" />
     </task>
     <servers />
   </component>

@@ -8,6 +8,7 @@ import ServerMembersModal from "@/src/components/modals/server-members-modal";
 import CreateChannelModal from "@/src/components/modals/create-channel-modal";
 import LeaveServerModal from "@/src/components/modals/leave-server-modal";
 import DeleteServerModal from "@/src/components/modals/delete-server-modal";
+import DeleteChannelModal from "@/src/components/modals/delete-channel-modal";
 
 // Component to manage modal rendering on the client side
 const ModalProvider = () => {
@@ -30,6 +31,7 @@ const ModalProvider = () => {
       <CreateServerModal />
       <ServerMembersModal />
       <CreateChannelModal />
+      <DeleteChannelModal />
     </>
   );
 };
