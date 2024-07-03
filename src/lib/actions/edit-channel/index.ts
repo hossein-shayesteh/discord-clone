@@ -53,6 +53,9 @@ const handler = async (data: InputType): Promise<ReturnType> => {
             where: {
               id: channelId,
               serverId,
+              name: {
+                not: "general",
+              },
             },
             data: {
               name: title,

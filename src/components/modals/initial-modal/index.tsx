@@ -19,7 +19,7 @@ const InitialModal = () => {
   // State to track if component is mounted
   const [isMounted, setIsMounted] = useState(false);
 
-  // Hook for executing createServer action
+  // Hook for executing 'createServer' action
   const { execute, fieldErrors } = useAction(createServer);
 
   // Set isMounted to true to prevent hydration errors

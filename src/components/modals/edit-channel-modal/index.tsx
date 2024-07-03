@@ -20,13 +20,12 @@ import {
 } from "@/src/components/ui/select";
 import { FormInput } from "@/src/components/form/FormInput";
 import FormSubmitButton from "@/src/components/form/FormSubmitButton";
-import { createChannel } from "@/src/lib/actions/create-channel";
 import { Label } from "@/src/components/ui/label";
 import { ServerWithMembersWithProfiles } from "@/src/types/db";
 import { Channel, ChannelType } from "@prisma/client";
 import { editChannel } from "@/src/lib/actions/edit-channel";
 
-const CreateChannelModal = () => {
+const EditChannelModal = () => {
   const [channelType, setChannelType] = useState<"TEXT" | "AUDIO" | "VIDEO">(
     "TEXT",
   );
@@ -49,7 +48,7 @@ const CreateChannelModal = () => {
     setChannelType(initialChannelType!);
   }, [initialChannelType]);
 
-  // Hook for executing createChannel action
+  // Hook for executing 'editChannel' action
   const { execute, fieldErrors } = useAction(editChannel, {
     onSuccess: () => {
       onClose();
@@ -153,4 +152,4 @@ const CreateChannelModal = () => {
     </Dialog>
   );
 };
-export default CreateChannelModal;
+export default EditChannelModal;

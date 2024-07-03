@@ -21,7 +21,7 @@ const CreateServerModal = () => {
 
   const { isOpen, onClose, type } = useModal();
 
-  // Hook for executing createServer action
+  // Hook for executing 'createServer' action
   const { execute, fieldErrors } = useAction(createServer, {
     onSuccess: () => {
       onClose();

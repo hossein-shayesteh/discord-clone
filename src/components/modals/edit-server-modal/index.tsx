@@ -23,7 +23,7 @@ const EditServerModal = () => {
 
   const { server } = data;
 
-  // Hook for executing editServer action
+  // Hook for executing 'editServer' action
   const { execute } = useAction(editServer, {
     onSuccess: () => {
       onClose();

@@ -41,7 +41,7 @@ const CreateChannelModal = () => {
     setChannelType(initialChannelType!);
   }, [initialChannelType]);
 
-  // Hook for executing createChannel action
+  // Hook for executing 'createChannel' action
   const { execute, fieldErrors } = useAction(createChannel, {
     onSuccess: () => {
       onClose();

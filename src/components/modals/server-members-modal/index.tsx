@@ -51,7 +51,7 @@ const ServerMembersModal = () => {
 
   const { server } = data as { server: ServerWithMembersWithProfiles };
 
-  // Hook for executing "editRole" action
+  // Hook for executing 'editRole' action
   const { execute: executeEditRole, isLoading: editRoleLoading } = useAction(
     editRole,
     {

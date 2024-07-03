@@ -25,7 +25,7 @@ const InviteModal = () => {
 
   const inviteUrl = `${origin}/invite/${data.server?.inviteCode}`;
 
-  // Hook for executing updating invite link action
+  // Hook for executing 'updateInviteLink' action
   const { execute, isLoading } = useAction(updateInviteLink, {
     onSuccess: (data) => {
       onOpen("invite", { server: data });
