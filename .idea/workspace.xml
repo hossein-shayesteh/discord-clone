@@ -6,14 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c9ac52e0-5325-4a5d-aeed-3f67d800d249" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modals/create-channel-modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/create-channel-modal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modals/create-server-modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/create-server-modal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modals/edit-channel-modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/edit-channel-modal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modals/edit-server-modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/edit-server-modal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modals/initial-modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/initial-modal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modals/invite-modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/invite-modal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modals/server-members-modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/server-members-modal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/actions/edit-channel/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/actions/edit-channel/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerChannel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerChannel.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +116,7 @@
       <workItem from="1719677388870" duration="10100000" />
       <workItem from="1719762564585" duration="10035000" />
       <workItem from="1719942805773" duration="4361000" />
-      <workItem from="1720023817161" duration="810000" />
+      <workItem from="1720023817161" duration="2700000" />
     </task>
     <servers />
   </component>

@@ -6,7 +6,7 @@ import { Channel, ChannelType, MemberRole, Server } from "@prisma/client";
 import { Edit, Hash, Lock, Mic, Trash, Video } from "lucide-react";
 import ActionTooltip from "@/src/components/ui/action-tooltip";
 import { cn } from "@/src/lib/utils";
-import { useModal } from "@/src/hooks/useModal";
+import { ModalType, useModal } from "@/src/hooks/useModal";
 
 interface ServerChannelProps {
   channel: Channel;
@@ -31,19 +31,28 @@ const channelTypeIconMap = {
 };
 
 const ServerChannel = ({ channel, role, server }: ServerChannelProps) => {
-  const { onOpen } = useModal();
+  const { onOpen, type } = useModal();
 
   const router = useRouter();
   const params = useParams();
 
-  // // Function to handle click on command items
-  // const onClick = (id: string) => {
-  //   router.push(`/servers/${params.serverId}/channels/${id}`);
-  // };
+  // Function to handle click on command items
+  const onClick = (id: string) => {
+    router.push(`/servers/${params.serverId}/channels/${id}`);
+  };
+
+  const onAction = (e: React.MouseEvent, action: ModalType) => {
+    e.stopPropagation();
+    onOpen(action, {
+      channel,
+      server,
+      channelType: channel.type,
+    });
+  };
 
   return (
     <button
-      // onClick={() => onClick(channel.id)}
+      onClick={() => onClick(channel.id)}
       className={cn(
         "group mb-1 flex w-full items-center gap-x-2 rounded-md p-2 transition hover:bg-zinc-700/10 dark:hover:bg-zinc-700/50",
         params?.channelId === channel.id && "bg-zinc-700/20 dark:bg-zinc-700",
@@ -64,13 +73,7 @@ const ServerChannel = ({ channel, role, server }: ServerChannelProps) => {
           <ActionTooltip label={"Edit"} side={"top"}>
             <Edit
               // Open edit channel modal
-              onClick={() =>
-                onOpen("editChannel", {
-                  channel,
-                  server,
-                  channelType: channel.type,
-                })
-              }
+              onClick={(e) => onAction(e, "editChannel")}
               className={
                 "hidden h-4 w-4 text-zinc-500 transition hover:text-zinc-600 group-hover:block dark:text-zinc-400 dark:hover:text-zinc-300"
               }
@@ -79,7 +82,7 @@ const ServerChannel = ({ channel, role, server }: ServerChannelProps) => {
           <ActionTooltip label={"Delete"} side={"top"}>
             <Trash
               // Open delete channel modal
-              onClick={() => onOpen("deleteChannel", { channel, server })}
+              onClick={(e) => onAction(e, "deleteChannel")}
               className={
                 "hidden h-4 w-4 text-zinc-500 transition hover:text-zinc-600 group-hover:block dark:text-zinc-400 dark:hover:text-zinc-300"
               }
