@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9ac52e0-5325-4a5d-aeed-3f67d800d249" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatHeader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/MobileToggle.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/channels/[channelId]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/conversation/[memberId]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/sheet.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/database/fetch-channel.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/database/fetch-general-channel.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerChannel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerChannel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerSearch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerSearch.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerSidebarHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerSidebarHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +126,8 @@
       <workItem from="1719677388870" duration="10100000" />
       <workItem from="1719762564585" duration="10035000" />
       <workItem from="1719942805773" duration="4361000" />
-      <workItem from="1720023817161" duration="2700000" />
+      <workItem from="1720023817161" duration="4119000" />
+      <workItem from="1720083446825" duration="6380000" />
     </task>
     <servers />
   </component>

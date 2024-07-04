@@ -55,6 +55,8 @@ const ServerSearch = ({ data }: ServerSearchProps) => {
       router.push(`/servers/${params.serverId}/channels/${id}`);
     if (type === "members")
       router.push(`/servers/${params.serverId}/conversation/${id}`);
+
+    setOpen(false);
   };
 
   return (
@@ -89,9 +91,8 @@ const ServerSearch = ({ data }: ServerSearchProps) => {
             if (!data.length) return null;
 
             return (
-              <>
-                {" "}
-                <CommandGroup key={label} heading={label}>
+              <React.Fragment key={label}>
+                <CommandGroup heading={label}>
                   {data.map(({ icon, name, id }) => (
                     <CommandItem
                       key={id}
@@ -102,8 +103,8 @@ const ServerSearch = ({ data }: ServerSearchProps) => {
                     </CommandItem>
                   ))}
                 </CommandGroup>
-                <CommandSeparator />
-              </>
+                <CommandSeparator key={`${label}-separator`} />
+              </React.Fragment>
             );
           })}
         </CommandList>
@@ -111,4 +112,5 @@ const ServerSearch = ({ data }: ServerSearchProps) => {
     </>
   );
 };
+
 export default ServerSearch;
