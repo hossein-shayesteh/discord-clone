@@ -7,7 +7,11 @@ export const fetchServers = async () => {
 
   if (!profile) auth().redirectToSignIn();
 
-  return db.server.findMany({
-    where: { members: { some: { profileId: profile.id } } },
-  });
+  try {
+    return db.server.findMany({
+      where: { members: { some: { profileId: profile.id } } },
+    });
+  } catch {
+    return null;
+  }
 };

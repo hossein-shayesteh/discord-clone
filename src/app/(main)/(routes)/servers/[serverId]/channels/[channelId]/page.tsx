@@ -2,11 +2,10 @@ import { redirect } from "next/navigation";
 import { fetchChannel } from "@/src/lib/database/fetch-channel";
 import ChatHeader from "@/src/app/(main)/(routes)/servers/[serverId]/_components/ChatHeader";
 
-const ChannelPage = async ({
-  params: { channelId },
-}: {
+interface ChannelPageProps {
   params: { channelId: string };
-}) => {
+}
+const ChannelPage = async ({ params: { channelId } }: ChannelPageProps) => {
   const channel = await fetchChannel(channelId);
 
   if (!channel) redirect("/");

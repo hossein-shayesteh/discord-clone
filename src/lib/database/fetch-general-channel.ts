@@ -7,28 +7,32 @@ export const fetchGeneralChannel = async (serverId: string) => {
 
   if (!profile) auth().redirectToSignIn();
 
-  const server = await db.server.findUnique({
-    where: {
-      id: serverId,
-      members: {
-        some: {
-          profile: {
-            id: profile.id,
+  try {
+    const server = await db.server.findUnique({
+      where: {
+        id: serverId,
+        members: {
+          some: {
+            profile: {
+              id: profile.id,
+            },
           },
         },
       },
-    },
-    include: {
-      channels: {
-        where: {
-          name: "general",
-        },
-        orderBy: {
-          createdAt: "asc",
+      include: {
+        channels: {
+          where: {
+            name: "general",
+          },
+          orderBy: {
+            createdAt: "asc",
+          },
         },
       },
-    },
-  });
+    });
 
-  return server?.channels[0];
+    return server?.channels[0];
+  } catch {
+    return null;
+  }
 };

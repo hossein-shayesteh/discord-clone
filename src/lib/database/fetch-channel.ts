@@ -7,12 +7,16 @@ export const fetchChannel = async (id: string) => {
 
   if (!profile) auth().redirectToSignIn();
 
-  return db.channel.findUnique({
-    where: {
-      id,
-      profile: {
-        id: profile.id,
+  try {
+    return db.channel.findUnique({
+      where: {
+        id,
+        profile: {
+          id: profile.id,
+        },
       },
-    },
-  });
+    });
+  } catch {
+    return null;
+  }
 };
