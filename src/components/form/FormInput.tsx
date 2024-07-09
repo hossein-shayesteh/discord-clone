@@ -1,6 +1,11 @@
 "use client";
 
-import { forwardRef } from "react";
+import {
+  FocusEventHandler,
+  forwardRef,
+  HTMLInputAutoCompleteAttribute,
+  HTMLInputTypeAttribute,
+} from "react";
 import { useFormStatus } from "react-dom";
 import FormErrors from "@/src/components/form/FromErrors";
 import { Label } from "@/src/components/ui/label";
@@ -10,15 +15,16 @@ import { cn } from "@/src/lib/utils";
 // Interface for the props expected by FormInput component
 interface FormInputProps {
   id: string;
+  type?: HTMLInputTypeAttribute;
   label?: string;
-  type?: string;
-  placeHolder?: string;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
+  errors?: Record<string, string[] | undefined>;
   required?: boolean;
   disabled?: boolean;
-  errors?: Record<string, string[] | undefined>;
   className?: string;
-  defaultValue?: string;
-  onBlur?: () => void;
+  placeHolder?: string;
+  autoComplete?: HTMLInputAutoCompleteAttribute;
+  defaultValue?: string | number | readonly string[];
 }
 
 // FormInput component definition using forwardRef
@@ -26,15 +32,16 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
   (
     {
       id,
-      className,
-      defaultValue = "",
-      disabled,
-      errors,
+      type,
       label,
       onBlur,
-      placeHolder,
+      errors,
       required,
-      type,
+      disabled,
+      className,
+      placeHolder,
+      autoComplete,
+      defaultValue,
     },
     ref, // Forwarded ref for the input element
   ) => {
@@ -62,6 +69,7 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
             disabled={pending || disabled} // Disable input if form is pending or disabled
             required={required}
             placeholder={placeHolder}
+            autoComplete={autoComplete}
             defaultValue={defaultValue}
             className={cn("px-2 py-1", className)}
             aria-describedby={`${id}-error`}
