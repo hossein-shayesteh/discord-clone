@@ -1,25 +1,47 @@
 "use client";
 
+import { ElementRef, useRef } from "react";
 import { Plus, Smile } from "lucide-react";
 import { FormInput } from "@/src/components/form/FormInput";
-import { ElementRef, useRef } from "react";
+import { useAction } from "@/src/hooks/use-action";
+import { sendChannelMessage } from "@/src/lib/actions/send-channel-message";
 
-interface ChatInputProps {
+type ChatInputProps = {
   name: string;
   serverId: string;
-  channelId?: string;
-  memberId?: string;
-  type: "channel" | "conversation";
-}
+} & (
+  | {
+      type: "channel";
+      channelId: string;
+      memberId?: never;
+    }
+  | {
+      type: "conversation";
+      memberId: string;
+      channelId?: never;
+    }
+);
 
-const ChatInput = ({ channelId, name, serverId, type }: ChatInputProps) => {
+const ChatInput = ({
+  channelId,
+  memberId,
+  name,
+  serverId,
+  type,
+}: ChatInputProps) => {
   const formRef = useRef<ElementRef<"form">>(null);
 
-  const onSubmit = (formData: FormData) => {
-    const message = formData.get("message") as string;
+  const { execute } = useAction(sendChannelMessage, {
+    onSuccess: (data) => console.log(data),
+  });
 
+  const onSubmit = async (formData: FormData) => {
+    const message = formData.get("message") as string;
     formRef.current?.reset();
-    console.log(message);
+
+    if (type === "channel") {
+      await execute({ channelId, serverId, message });
+    }
   };
 
   return (

@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9ac52e0-5325-4a5d-aeed-3f67d800d249" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatInput.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/actions/send-channel-message/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/actions/send-channel-message/schema.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/actions/send-channel-message/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/channels/[channelId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/channels/[channelId]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/FormInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/FormInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatInput.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hooks/use-socket.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/use-socket.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -121,7 +122,7 @@
       <workItem from="1720023817161" duration="4119000" />
       <workItem from="1720083446825" duration="8227000" />
       <workItem from="1720291720973" duration="4811000" />
-      <workItem from="1720526879225" duration="11167000" />
+      <workItem from="1720526879225" duration="14657000" />
     </task>
     <servers />
   </component>
