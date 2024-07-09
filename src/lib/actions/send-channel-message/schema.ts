@@ -5,4 +5,5 @@ export const sendChannelMessageSchema = z.object({
   message: z.string().min(1),
   serverId: z.string(),
   channelId: z.string(),
+  imageUrl: z.string().optional(),
 });

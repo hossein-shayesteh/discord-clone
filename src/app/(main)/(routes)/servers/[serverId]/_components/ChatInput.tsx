@@ -5,6 +5,8 @@ import { Plus, Smile } from "lucide-react";
 import { FormInput } from "@/src/components/form/FormInput";
 import { useAction } from "@/src/hooks/use-action";
 import { sendChannelMessage } from "@/src/lib/actions/send-channel-message";
+import { useSocket } from "@/src/hooks/use-socket";
+import { useModal } from "@/src/hooks/useModal";
 
 type ChatInputProps = {
   name: string;
@@ -31,8 +33,15 @@ const ChatInput = ({
 }: ChatInputProps) => {
   const formRef = useRef<ElementRef<"form">>(null);
 
+  const { onOpen } = useModal();
+
+  const { emit } = useSocket();
+
   const { execute } = useAction(sendChannelMessage, {
-    onSuccess: (data) => console.log(data),
+    onSuccess: (data) => {
+      const channelKey = `chat:${data.channelId}:message`;
+      emit(channelKey, data);
+    },
   });
 
   const onSubmit = async (formData: FormData) => {
@@ -49,7 +58,9 @@ const ChatInput = ({
       <div className={"relative w-full p-4 pb-6"}>
         <button
           type={"button"}
-          onClick={() => {}}
+          onClick={() => {
+            onOpen("sendFile", { serverId, channelId });
+          }}
           className={
             "absolute bottom-9 left-7 flex h-6 w-6 items-center justify-center rounded-full bg-zinc-500 p-1 transition hover:bg-zinc-600 dark:bg-zinc-400 dark:hover:bg-zinc-300"
           }

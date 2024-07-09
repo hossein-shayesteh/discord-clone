@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9ac52e0-5325-4a5d-aeed-3f67d800d249" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/lib/actions/send-channel-message/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/actions/send-channel-message/schema.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/actions/send-channel-message/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modals/send-file-modal/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatInput.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/use-socket.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/use-socket.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(setup)/_components/fileUpload.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/fileUpload.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modals/create-server-modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/create-server-modal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modals/edit-server-modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/edit-server-modal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modals/initial-modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/initial-modal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/providers/ModalProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/providers/ModalProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useModal.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useModal.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/actions/send-channel-message/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/actions/send-channel-message/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/actions/send-channel-message/schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/actions/send-channel-message/schema.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,37 +37,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Hossein/Documents/discord-clone/src/lib/actions&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Hossein\\Documents\\discord-clone\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;http.proxy&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Hossein\\Documents\\discord-clone\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Hossein/Documents/discord-clone/src/components/modals",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Hossein\\Documents\\discord-clone\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "http.proxy",
+    "ts.external.directory.path": "C:\\Users\\Hossein\\Documents\\discord-clone\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Hossein\Documents\discord-clone\src\lib\actions" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\components\modals" />
+      <recent name="C:\Users\Hossein\Documents\discord-clone\src\lib\actions" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(main)\(routes)\servers\[serverId]\_components" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(main)\(routes)\test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Hossein\Documents\discord-clone\src\components\ui" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(invite)\(routes)\invite\[inviteCode]" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(main)\(routes)\_components" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(setup)" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(main)\(routes)" />
-      <recent name="C:\Users\Hossein\Documents\discord-clone\src\app" />
     </key>
   </component>
   <component name="RunManager">
@@ -122,7 +127,7 @@
       <workItem from="1720023817161" duration="4119000" />
       <workItem from="1720083446825" duration="8227000" />
       <workItem from="1720291720973" duration="4811000" />
-      <workItem from="1720526879225" duration="14657000" />
+      <workItem from="1720526879225" duration="22525000" />
     </task>
     <servers />
   </component>

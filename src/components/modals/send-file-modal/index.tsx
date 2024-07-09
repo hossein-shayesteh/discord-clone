@@ -9,34 +9,35 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/src/components/ui/dialog";
-import { FormInput } from "@/src/components/form/FormInput";
 import FormSubmitButton from "@/src/components/form/FormSubmitButton";
 import FileUpload from "@/src/components/ui/fileUpload";
 import { useAction } from "@/src/hooks/use-action";
-import { editServer } from "@/src/lib/actions/edit-server";
+import { sendChannelMessage } from "@/src/lib/actions/send-channel-message";
 import { useModal } from "@/src/hooks/useModal";
+import { useSocket } from "@/src/hooks/use-socket";
 
-const EditServerModal = () => {
+const SendFileModal = () => {
   const formRef = useRef<ElementRef<"form">>(null);
 
   const { isOpen, onClose, type, data } = useModal();
+  const { serverId, channelId } = data;
 
-  const { server } = data;
+  const { emit } = useSocket();
 
-  // Hook for executing 'editServer' action
-  const { execute } = useAction(editServer, {
-    onSuccess: () => {
+  // Hook for executing action
+  const { execute, fieldErrors } = useAction(sendChannelMessage, {
+    onSuccess: (message) => {
       onClose();
+      const channelKey = `chat:${message.channelId}:message`;
+      emit(channelKey, data);
     },
   });
 
   // Function to handle form submission
   const onSubmit = async (formData: FormData) => {
-    const title = formData.get("title") as string;
     const imageUrl = formData.get("imageUrl") as string;
-    const id = server!.id;
-
-    await execute({ title, imageUrl, id });
+    if (channelId && serverId)
+      await execute({ channelId, serverId, imageUrl, message: "image" });
   };
 
   // Function to handle modal closure
@@ -46,15 +47,14 @@ const EditServerModal = () => {
   };
 
   return (
-    <Dialog open={isOpen && type === "editServer"} onOpenChange={handleClose}>
+    <Dialog open={isOpen && type === "sendFile"} onOpenChange={handleClose}>
       <DialogContent className={"overflow-hidden bg-white p-0 text-black"}>
         <DialogHeader className={"px-6 pt-8"}>
           <DialogTitle className={"text-center text-2xl font-bold"}>
-            Edit your server
+            Add an attachment
           </DialogTitle>
           <DialogDescription className={"text-center text-zinc-500"}>
-            Give your server a personality with a name and an image. You can
-            always change it later.
+            Send a file as an message
           </DialogDescription>
         </DialogHeader>
         <form action={onSubmit} className={"space-y-8"} ref={formRef}>
@@ -62,28 +62,18 @@ const EditServerModal = () => {
             <div className={"flex items-center justify-center text-center"}>
               <FileUpload
                 id={"imageUrl"}
-                image={server?.imageUrl}
                 endpoint={"imageUploader"}
                 onUploadError={() => {}}
                 onUploadComplete={() => {}}
               />
             </div>
-            <FormInput
-              id={"title"}
-              label={"SERVER NAME"}
-              defaultValue={server?.name}
-              className={
-                "border-0 bg-zinc-300/50 text-black focus-visible:ring-0 focus-visible:ring-offset-0"
-              }
-              placeHolder={"Enter server name"}
-            />
           </div>
           <DialogFooter className={"bg-gray-100 px-6 py-4"}>
-            <FormSubmitButton variant={"primary"}>Save</FormSubmitButton>
+            <FormSubmitButton variant={"primary"}>Send</FormSubmitButton>
           </DialogFooter>
         </form>
       </DialogContent>
     </Dialog>
   );
 };
-export default EditServerModal;
+export default SendFileModal;

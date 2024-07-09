@@ -10,11 +10,15 @@ export type ModalType =
   | "serverMembers"
   | "createChannel"
   | "editChannel"
-  | "deleteChannel";
+  | "deleteChannel"
+  | "sendFile";
 
 interface ModalData {
   server?: Server;
   channel?: Channel;
+  serverId?: string;
+  channelId?: string;
+  memberId?: string;
   channelType?: ChannelType;
 }
 

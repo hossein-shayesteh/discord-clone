@@ -21,7 +21,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       error: "Unauthorized",
     };
 
-  const { channelId, serverId, message: content } = data;
+  const { channelId, serverId, message: content, imageUrl } = data;
 
   // Declaring variable to hold message data
   let message;
@@ -62,6 +62,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
         channelId,
         content,
         memberId: currentMember.id,
+        imageUrl,
       },
       include: {
         member: {
