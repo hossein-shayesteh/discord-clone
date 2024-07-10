@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { ConversationWithProfile } from "@/src/types/db";
 import { currentProfile } from "@/src/lib/auth/current-profile";
 import ChatHeader from "@/src/app/(main)/(routes)/servers/[serverId]/_components/ChatHeader";
+import ChatInput from "@/src/app/(main)/(routes)/servers/[serverId]/_components/ChatInput";
 
 interface MemberPageProps {
   params: { memberId: string; serverId: string };
@@ -34,6 +35,12 @@ const MemberPage = async ({
         type={"conversation"}
         name={otherMember.profile.name}
         imageUrl={otherMember.profile.imageUrl}
+      />
+      <ChatInput
+        memberId={otherMember.profileId}
+        serverId={serverId}
+        type={"conversation"}
+        name={otherMember.profile.name}
       />
     </div>
   );

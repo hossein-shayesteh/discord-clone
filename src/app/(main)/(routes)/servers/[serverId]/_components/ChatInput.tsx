@@ -41,6 +41,8 @@ const ChatInput = ({ channelId, name, serverId, type }: ChatInputProps) => {
 
   const onSubmit = async () => {
     if (type === "channel") await execute({ channelId, serverId, message });
+    if (type === "conversation") {
+    }
     setMessage("");
   };
 
