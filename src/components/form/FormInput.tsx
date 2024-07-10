@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  ChangeEventHandler,
   FocusEventHandler,
   forwardRef,
   HTMLInputAutoCompleteAttribute,
@@ -17,9 +18,11 @@ interface FormInputProps {
   id: string;
   type?: HTMLInputTypeAttribute;
   label?: string;
+  value?: string | number | readonly string[] | undefined;
   onBlur?: FocusEventHandler<HTMLInputElement>;
   errors?: Record<string, string[] | undefined>;
   required?: boolean;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
   disabled?: boolean;
   className?: string;
   placeHolder?: string;
@@ -33,11 +36,13 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
     {
       id,
       type,
+      value,
       label,
       onBlur,
       errors,
       required,
       disabled,
+      onChange,
       className,
       placeHolder,
       autoComplete,
@@ -65,7 +70,9 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
             name={id}
             ref={ref}
             type={type}
+            value={value}
             onBlur={onBlur}
+            onChange={onChange}
             disabled={pending || disabled} // Disable input if form is pending or disabled
             required={required}
             placeholder={placeHolder}

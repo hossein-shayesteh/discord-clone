@@ -1,12 +1,13 @@
 "use client";
 
-import { ElementRef, useRef } from "react";
-import { Plus, Smile } from "lucide-react";
-import { FormInput } from "@/src/components/form/FormInput";
-import { useAction } from "@/src/hooks/use-action";
-import { sendChannelMessage } from "@/src/lib/actions/send-channel-message";
+import { useState } from "react";
+import { Plus } from "lucide-react";
 import { useSocket } from "@/src/hooks/use-socket";
 import { useModal } from "@/src/hooks/useModal";
+import { useAction } from "@/src/hooks/use-action";
+import { sendChannelMessage } from "@/src/lib/actions/send-channel-message";
+import { FormInput } from "@/src/components/form/FormInput";
+import EmojiPicker from "@/src/app/(main)/(routes)/servers/[serverId]/_components/EmojiPicker";
 
 type ChatInputProps = {
   name: string;
@@ -24,14 +25,8 @@ type ChatInputProps = {
     }
 );
 
-const ChatInput = ({
-  channelId,
-  memberId,
-  name,
-  serverId,
-  type,
-}: ChatInputProps) => {
-  const formRef = useRef<ElementRef<"form">>(null);
+const ChatInput = ({ channelId, name, serverId, type }: ChatInputProps) => {
+  const [message, setMessage] = useState<string>("");
 
   const { onOpen } = useModal();
 
@@ -44,17 +39,13 @@ const ChatInput = ({
     },
   });
 
-  const onSubmit = async (formData: FormData) => {
-    const message = formData.get("message") as string;
-    formRef.current?.reset();
-
-    if (type === "channel") {
-      await execute({ channelId, serverId, message });
-    }
+  const onSubmit = async () => {
+    if (type === "channel") await execute({ channelId, serverId, message });
+    setMessage("");
   };
 
   return (
-    <form action={onSubmit} ref={formRef}>
+    <form action={onSubmit}>
       <div className={"relative w-full p-4 pb-6"}>
         <button
           type={"button"}
@@ -68,6 +59,8 @@ const ChatInput = ({
           <Plus className={"text-white dark:text-[#313338]"} />
         </button>
         <FormInput
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
           id={"message"}
           autoComplete={"off"}
           placeHolder={`Message ${type === "conversation" ? name : "#" + name}`}
@@ -80,7 +73,9 @@ const ChatInput = ({
           onClick={() => {}}
           className={"absolute bottom-9 right-7"}
         >
-          <Smile />
+          <EmojiPicker
+            onChange={(emoji) => setMessage((prev) => prev + emoji)}
+          />
         </button>
       </div>
     </form>

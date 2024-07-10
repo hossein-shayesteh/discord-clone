@@ -1,6 +1,10 @@
 "use client";
 
 import { ElementRef, useRef } from "react";
+import { useSocket } from "@/src/hooks/use-socket";
+import { useAction } from "@/src/hooks/use-action";
+import { useModal } from "@/src/hooks/useModal";
+import { sendChannelMessage } from "@/src/lib/actions/send-channel-message";
 import {
   Dialog,
   DialogContent,
@@ -11,10 +15,6 @@ import {
 } from "@/src/components/ui/dialog";
 import FormSubmitButton from "@/src/components/form/FormSubmitButton";
 import FileUpload from "@/src/components/ui/fileUpload";
-import { useAction } from "@/src/hooks/use-action";
-import { sendChannelMessage } from "@/src/lib/actions/send-channel-message";
-import { useModal } from "@/src/hooks/useModal";
-import { useSocket } from "@/src/hooks/use-socket";
 
 const SendFileModal = () => {
   const formRef = useRef<ElementRef<"form">>(null);
@@ -25,7 +25,7 @@ const SendFileModal = () => {
   const { emit } = useSocket();
 
   // Hook for executing action
-  const { execute, fieldErrors } = useAction(sendChannelMessage, {
+  const { execute } = useAction(sendChannelMessage, {
     onSuccess: (message) => {
       onClose();
       const channelKey = `chat:${message.channelId}:message`;
