@@ -17,6 +17,8 @@ import ActionTooltip from "@/src/components/ui/action-tooltip";
 import UserAvatar from "@/src/components/modals/server-members-modal/UserAvatar";
 import { FormInput } from "@/src/components/form/FormInput";
 import { Button } from "@/src/components/ui/button";
+import { deleteChannelMessage } from "@/src/lib/actions/delete-channel-message";
+import { useSocket } from "@/src/hooks/use-socket";
 
 interface ChatItemProps {
   message: MessagesWithProfile;
@@ -47,7 +49,7 @@ const ChatItem = ({
   currentMember,
 }: ChatItemProps) => {
   const [isEditing, setIsEditing] = useState(false);
-  // const [isDeleted, setIsDeleted] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(deleted);
   const [isUpdated, setIsUpdated] = useState(
     updatedAt.getTime() !== createdAt.getTime(),
   );
@@ -59,17 +61,32 @@ const ChatItem = ({
   const isAdmin = currentMember.role === MemberRole.ADMIN;
   const isModerator = currentMember.role === MemberRole.MODERATOR;
   const isOwner = currentMember.id === member.id;
-  const canDeleteMessage = !deleted && (isAdmin || isModerator || isOwner);
-  const canEditedMessage = !deleted && isOwner && !imageUrl;
+  const canDeleteMessage = !isDeleted && (isAdmin || isModerator || isOwner);
+  const canEditedMessage = !isDeleted && isOwner && !imageUrl;
   const isImage = imageUrl !== null;
 
   const timestamp = format(new Date(createdAt), "dd MMM yyyy, HH:mm");
+
+  const { emit } = useSocket();
 
   const { execute: executeEditMessage } = useAction(editChannelMessage, {
     onSuccess: (data) => {
       disableEditing();
       setIsUpdated(true);
       setMessageContent(data.content);
+
+      const updateKey = `chat:${data.channelId}:message:update`;
+      emit(updateKey, data);
+    },
+  });
+
+  const { execute: executeDeleteMessage } = useAction(deleteChannelMessage, {
+    onSuccess: (data) => {
+      setIsDeleted(true);
+      setMessageContent(data.content);
+
+      const updateKey = `chat:${data.channelId}:message:update`;
+      emit(updateKey, data);
     },
   });
 
@@ -97,6 +114,10 @@ const ChatItem = ({
     const content = formData.get("content") as string;
 
     await executeEditMessage({ content, id, channelId, serverId });
+  };
+
+  const onDeleteMessage = async () => {
+    await executeDeleteMessage({ id, serverId, channelId });
   };
 
   return (
@@ -148,12 +169,12 @@ const ChatItem = ({
             <p
               className={cn(
                 "mt-1 text-sm text-zinc-600 dark:text-zinc-300",
-                deleted &&
+                isDeleted &&
                   "mt-1 text-xs italic text-zinc-500 dark:text-zinc-400",
               )}
             >
               {messageContent}
-              {isUpdated && !deleted && (
+              {isUpdated && !isDeleted && (
                 <span
                   className={
                     "mx-2 text-[10px] text-zinc-500 dark:text-zinc-400"
@@ -204,6 +225,7 @@ const ChatItem = ({
           )}
           <ActionTooltip label={"Delete"} side={"top"}>
             <Trash
+              onClick={onDeleteMessage}
               className={
                 "ml-auto h-4 w-4 cursor-pointer text-zinc-500 transition hover:text-zinc-600 dark:hover:text-zinc-300"
               }
