@@ -26,7 +26,7 @@ type ChatInputProps = {
 );
 
 const ChatInput = ({ channelId, name, serverId, type }: ChatInputProps) => {
-  const [message, setMessage] = useState<string>("");
+  const [content, setContent] = useState<string>("");
 
   const { onOpen } = useModal();
 
@@ -40,10 +40,10 @@ const ChatInput = ({ channelId, name, serverId, type }: ChatInputProps) => {
   });
 
   const onSubmit = async () => {
-    if (type === "channel") await execute({ channelId, serverId, message });
+    if (type === "channel") await execute({ channelId, serverId, content });
     if (type === "conversation") {
     }
-    setMessage("");
+    setContent("");
   };
 
   return (
@@ -61,8 +61,8 @@ const ChatInput = ({ channelId, name, serverId, type }: ChatInputProps) => {
           <Plus className={"text-white dark:text-[#313338]"} />
         </button>
         <FormInput
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
           id={"message"}
           autoComplete={"off"}
           placeHolder={`Message ${type === "conversation" ? name : "#" + name}`}
@@ -76,7 +76,7 @@ const ChatInput = ({ channelId, name, serverId, type }: ChatInputProps) => {
           className={"absolute bottom-9 right-7"}
         >
           <EmojiPicker
-            onChange={(emoji) => setMessage((prev) => prev + emoji)}
+            onChange={(emoji) => setContent((prev) => prev + emoji)}
           />
         </button>
       </div>

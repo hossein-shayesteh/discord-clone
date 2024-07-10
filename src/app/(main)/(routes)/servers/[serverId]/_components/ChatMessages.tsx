@@ -13,8 +13,6 @@ interface ChatMessagesProps {
   type: "channel" | "conversation";
 }
 
-const DATE_FORMAT = "dd MMM yyyy, HH:mm";
-
 const ChatMessages = async ({
   name,
   type,
@@ -33,17 +31,10 @@ const ChatMessages = async ({
       <div className={"mt-auto flex flex-col-reverse"}>
         {messages?.map((message: MessagesWithProfile) => (
           <ChatItem
-            id={message.id}
             key={message.id}
-            member={message.member}
-            content={message.content}
-            deleted={message.deleted}
-            imageUrl={message.imageUrl}
-            timestamp={format(new Date(message.createdAt), DATE_FORMAT)}
-            isUpdated={
-              message.updatedAt.getTime() !== message.createdAt.getTime()
-            }
+            serverId={serverId}
             currentMember={currentMember}
+            message={message}
           />
         ))}
       </div>

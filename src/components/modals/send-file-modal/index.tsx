@@ -37,7 +37,7 @@ const SendFileModal = () => {
   const onSubmit = async (formData: FormData) => {
     const imageUrl = formData.get("imageUrl") as string;
     if (channelId && serverId)
-      await execute({ channelId, serverId, imageUrl, message: "image" });
+      await execute({ channelId, serverId, imageUrl, content: "image" });
   };
 
   // Function to handle modal closure

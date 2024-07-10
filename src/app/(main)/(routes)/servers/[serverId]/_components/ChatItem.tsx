@@ -1,21 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { ElementRef, useRef, useState } from "react";
 import Image from "next/image";
+
+import { format } from "date-fns";
+import { Member, MemberRole } from "@prisma/client";
+import { useEventListener, useOnClickOutside } from "usehooks-ts";
 import { Edit, ShieldAlert, ShieldCheck, Trash } from "lucide-react";
-import { Member, MemberRole, Profile } from "@prisma/client";
+
 import { cn } from "@/src/lib/utils";
+import { useAction } from "@/src/hooks/use-action";
+import { MessagesWithProfile } from "@/src/types/db";
+import { editChannelMessage } from "@/src/lib/actions/edit-channel-message";
+
 import ActionTooltip from "@/src/components/ui/action-tooltip";
 import UserAvatar from "@/src/components/modals/server-members-modal/UserAvatar";
+import { FormInput } from "@/src/components/form/FormInput";
+import { Button } from "@/src/components/ui/button";
 
 interface ChatItemProps {
-  id: string;
-  member: Member & { profile: Profile };
-  deleted: boolean;
-  content: string;
-  imageUrl: null | string;
-  timestamp: string;
-  isUpdated: boolean;
+  message: MessagesWithProfile;
+  serverId: string;
   currentMember: Member;
 }
 
@@ -28,17 +33,28 @@ const roleIconMap = {
 };
 
 const ChatItem = ({
-  id,
-  member,
-  deleted,
-  content,
-  imageUrl,
-  timestamp,
-  isUpdated,
+  message: {
+    id,
+    content,
+    deleted,
+    channelId,
+    imageUrl,
+    createdAt,
+    updatedAt,
+    member,
+  },
+  serverId,
   currentMember,
 }: ChatItemProps) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [isDeleted, setIsDeleted] = useState(false);
+  // const [isDeleted, setIsDeleted] = useState(false);
+  const [isUpdated, setIsUpdated] = useState(
+    updatedAt.getTime() !== createdAt.getTime(),
+  );
+  const [messageContent, setMessageContent] = useState(content);
+
+  const inputRef = useRef<ElementRef<"input">>(null);
+  const formRef = useRef<ElementRef<"form">>(null);
 
   const isAdmin = currentMember.role === MemberRole.ADMIN;
   const isModerator = currentMember.role === MemberRole.MODERATOR;
@@ -46,6 +62,42 @@ const ChatItem = ({
   const canDeleteMessage = !deleted && (isAdmin || isModerator || isOwner);
   const canEditedMessage = !deleted && isOwner && !imageUrl;
   const isImage = imageUrl !== null;
+
+  const timestamp = format(new Date(createdAt), "dd MMM yyyy, HH:mm");
+
+  const { execute: executeEditMessage } = useAction(editChannelMessage, {
+    onSuccess: (data) => {
+      disableEditing();
+      setIsUpdated(true);
+      setMessageContent(data.content);
+    },
+  });
+
+  const enableEditing = () => {
+    setIsEditing(true);
+    setTimeout(() => {
+      inputRef.current?.focus();
+      inputRef.current?.select();
+    });
+  };
+
+  const disableEditing = () => {
+    setIsEditing(false);
+  };
+
+  const onKeyDown = (e: KeyboardEvent) => {
+    if (e.key === "Escape") disableEditing();
+  };
+
+  // Event listener for keydown events
+  useEventListener("keydown", onKeyDown);
+  useOnClickOutside(formRef, disableEditing);
+
+  const OnEditMessage = async (formData: FormData) => {
+    const content = formData.get("content") as string;
+
+    await executeEditMessage({ content, id, channelId, serverId });
+  };
 
   return (
     <div
@@ -86,7 +138,7 @@ const ChatItem = ({
             >
               <Image
                 src={imageUrl}
-                alt={content}
+                alt={messageContent}
                 fill
                 className={"object-cover"}
               />
@@ -100,7 +152,7 @@ const ChatItem = ({
                   "mt-1 text-xs italic text-zinc-500 dark:text-zinc-400",
               )}
             >
-              {content}
+              {messageContent}
               {isUpdated && !deleted && (
                 <span
                   className={
@@ -111,6 +163,26 @@ const ChatItem = ({
                 </span>
               )}
             </p>
+          )}
+          {!imageUrl && isEditing && (
+            <form
+              ref={formRef}
+              action={OnEditMessage}
+              className={"flex items-center gap-x-2 pt-2"}
+            >
+              <FormInput
+                ref={inputRef}
+                id={"content"}
+                autoComplete={"off"}
+                defaultValue={messageContent}
+                className={
+                  "border-0 border-none bg-zinc-200/90 p-2 text-zinc-600 focus-visible:ring-0 focus-visible:ring-offset-0 dark:bg-zinc-700/75 dark:text-zinc-200"
+                }
+              />
+              <Button variant={"primary"} size={"sm"}>
+                Save
+              </Button>
+            </form>
           )}
         </div>
       </div>
@@ -123,7 +195,7 @@ const ChatItem = ({
           {canEditedMessage && (
             <ActionTooltip label={"Edit"} side={"top"}>
               <Edit
-                onClick={() => setIsEditing(true)}
+                onClick={() => enableEditing()}
                 className={
                   "ml-auto h-4 w-4 cursor-pointer text-zinc-500 transition hover:text-zinc-600 dark:hover:text-zinc-300"
                 }

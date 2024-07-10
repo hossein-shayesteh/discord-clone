@@ -6,8 +6,8 @@ import { db } from "@/src/lib/database/db";
 import {
   InputType,
   ReturnType,
-} from "@/src/lib/actions/send-channel-message/types";
-import { sendChannelMessageSchema } from "@/src/lib/actions/send-channel-message/schema";
+} from "@/src/lib/actions/edit-channel-message/types";
+import { editChannelMessageSchema } from "@/src/lib/actions/edit-channel-message/schema";
 import createSafeAction from "@/src/lib/actions/create-safe-action";
 
 // Handler function for action
@@ -21,7 +21,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       error: "Unauthorized",
     };
 
-  const { channelId, serverId, content, imageUrl } = data;
+  const { channelId, content, id, serverId } = data;
 
   // Declaring variable to hold message data
   let message;
@@ -57,12 +57,17 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     });
     if (!server) return { error: "Server not found" };
 
-    message = await db.message.create({
-      data: {
-        channelId,
-        content,
+    message = await db.message.update({
+      where: {
+        id,
+        channel: {
+          id: channelId,
+          serverId,
+        },
         memberId: currentMember.id,
-        imageUrl,
+      },
+      data: {
+        content,
       },
       include: {
         member: {
@@ -74,7 +79,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     });
   } catch (e) {
     // Return error if action fails
-    return { error: "Failed to create" };
+    return { error: "Failed to edit" };
   }
 
   // Revalidating the cache for path
@@ -84,7 +89,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   return { data: message };
 };
 
-export const sendChannelMessage = createSafeAction(
-  sendChannelMessageSchema,
+export const editChannelMessage = createSafeAction(
+  editChannelMessageSchema,
   handler,
 );
