@@ -32,9 +32,16 @@ export const useSocket = () => {
     socket.disconnect();
   }, []);
 
-  const emit = useCallback((event: any, data: any) => {
+  const emit = useCallback((event: string, data: any) => {
     socket.emit(event, data);
   }, []);
 
-  return { isConnected, connect, disconnect, emit };
+  const on = useCallback((event: string, callback: (data: any) => void) => {
+    socket.on(event, callback);
+    return () => {
+      socket.off(event, callback);
+    };
+  }, []);
+
+  return { isConnected, connect, disconnect, emit, on };
 };

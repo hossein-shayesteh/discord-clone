@@ -9,7 +9,13 @@ export const fetchServers = async () => {
 
   try {
     return db.server.findMany({
-      where: { members: { some: { profileId: profile.id } } },
+      where: {
+        members: {
+          some: {
+            profileId: profile.id,
+          },
+        },
+      },
     });
   } catch {
     return null;

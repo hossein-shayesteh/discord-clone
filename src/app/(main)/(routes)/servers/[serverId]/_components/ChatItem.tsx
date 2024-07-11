@@ -19,6 +19,7 @@ import { FormInput } from "@/src/components/form/FormInput";
 import { Button } from "@/src/components/ui/button";
 import { deleteChannelMessage } from "@/src/lib/actions/delete-channel-message";
 import { useSocket } from "@/src/hooks/use-socket";
+import { useRouter } from "next/navigation";
 
 interface ChatItemProps {
   message: MessagesWithProfile;
@@ -58,6 +59,9 @@ const ChatItem = ({
   const inputRef = useRef<ElementRef<"input">>(null);
   const formRef = useRef<ElementRef<"form">>(null);
 
+  const { emit } = useSocket();
+  const router = useRouter();
+
   const isAdmin = currentMember.role === MemberRole.ADMIN;
   const isModerator = currentMember.role === MemberRole.MODERATOR;
   const isOwner = currentMember.id === member.id;
@@ -66,8 +70,6 @@ const ChatItem = ({
   const isImage = imageUrl !== null;
 
   const timestamp = format(new Date(createdAt), "dd MMM yyyy, HH:mm");
-
-  const { emit } = useSocket();
 
   const { execute: executeEditMessage } = useAction(editChannelMessage, {
     onSuccess: (data) => {
@@ -120,6 +122,12 @@ const ChatItem = ({
     await executeDeleteMessage({ id, serverId, channelId });
   };
 
+  const onOpenConversation = () => {
+    if (currentMember.id === id) return;
+
+    router.push(`/servers/${serverId}/conversation/${member.id}`);
+  };
+
   return (
     <div
       className={
@@ -128,12 +136,17 @@ const ChatItem = ({
     >
       <div className={"group flex w-full items-start gap-x-2"}>
         <div className={"cursor-pointer transition hover:drop-shadow-md"}>
-          <UserAvatar src={member.profile.imageUrl} className={""} />
+          <UserAvatar
+            onClick={onOpenConversation}
+            src={member.profile.imageUrl}
+            className={""}
+          />
         </div>
         <div className={"flex w-full flex-col"}>
           <div className={"flex items-center gap-x-2"}>
             <div className={"flex items-center"}>
               <p
+                onClick={onOpenConversation}
                 className={
                   "cursor-pointer text-sm font-semibold hover:underline"
                 }

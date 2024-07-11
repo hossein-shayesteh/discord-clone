@@ -11,8 +11,14 @@ export const fetchChannel = async (id: string) => {
     return db.channel.findUnique({
       where: {
         id,
-        profile: {
-          id: profile.id,
+        server: {
+          members: {
+            some: {
+              profile: {
+                id: profile.id,
+              },
+            },
+          },
         },
       },
     });

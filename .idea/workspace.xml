@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9ac52e0-5325-4a5d-aeed-3f67d800d249" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/lib/actions/delete-channel-message/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/actions/delete-channel-message/schema.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/actions/delete-channel-message/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modals/server-members-modal/UserAvatar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/server-members-modal/UserAvatar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/use-socket.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/use-socket.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/database/fetch-channel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/database/fetch-channel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/database/fetch-servers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/database/fetch-servers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,24 +33,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Hossein/Documents/discord-clone/src/lib/actions",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.dev.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Hossein\\Documents\\discord-clone\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "http.proxy",
-    "ts.external.directory.path": "C:\\Users\\Hossein\\Documents\\discord-clone\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Hossein/Documents/discord-clone/src/lib/actions&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Hossein\\Documents\\discord-clone\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;http.proxy&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Hossein\\Documents\\discord-clone\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\lib\actions" />
@@ -122,7 +124,8 @@
       <workItem from="1720083446825" duration="8227000" />
       <workItem from="1720291720973" duration="4811000" />
       <workItem from="1720526879225" duration="22845000" />
-      <workItem from="1720612713890" duration="18687000" />
+      <workItem from="1720612713890" duration="19994000" />
+      <workItem from="1720703007804" duration="4334000" />
     </task>
     <servers />
   </component>
