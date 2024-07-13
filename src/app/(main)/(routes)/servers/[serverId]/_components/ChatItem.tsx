@@ -2,6 +2,7 @@
 
 import { ElementRef, useRef, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import { format } from "date-fns";
 import { Member, MemberRole } from "@prisma/client";
@@ -10,16 +11,15 @@ import { Edit, ShieldAlert, ShieldCheck, Trash } from "lucide-react";
 
 import { cn } from "@/src/lib/utils";
 import { useAction } from "@/src/hooks/use-action";
+import { useSocket } from "@/src/hooks/use-socket";
 import { MessagesWithProfile } from "@/src/types/db";
 import { editChannelMessage } from "@/src/lib/actions/edit-channel-message";
+import { deleteChannelMessage } from "@/src/lib/actions/delete-channel-message";
 
 import ActionTooltip from "@/src/components/ui/action-tooltip";
 import UserAvatar from "@/src/components/modals/server-members-modal/UserAvatar";
 import { FormInput } from "@/src/components/form/FormInput";
 import { Button } from "@/src/components/ui/button";
-import { deleteChannelMessage } from "@/src/lib/actions/delete-channel-message";
-import { useSocket } from "@/src/hooks/use-socket";
-import { useRouter } from "next/navigation";
 
 interface ChatItemProps {
   message: MessagesWithProfile;

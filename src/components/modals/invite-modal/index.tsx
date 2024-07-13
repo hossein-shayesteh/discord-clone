@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Check, Copy, RefreshCw } from "lucide-react";
-import { useModal } from "@/src/hooks/useModal";
+import { useModal } from "@/src/hooks/use-modal";
 import useOrigin from "@/src/hooks/use-origin";
 import { useAction } from "@/src/hooks/use-action";
 import { updateInviteLink } from "@/src/lib/actions/update-invite-link";

@@ -6,7 +6,7 @@ import { Channel, ChannelType, MemberRole, Server } from "@prisma/client";
 import { Edit, Hash, Lock, Mic, Trash, Video } from "lucide-react";
 import ActionTooltip from "@/src/components/ui/action-tooltip";
 import { cn } from "@/src/lib/utils";
-import { ModalType, useModal } from "@/src/hooks/useModal";
+import { ModalType, useModal } from "@/src/hooks/use-modal";
 
 interface ServerChannelProps {
   channel: Channel;

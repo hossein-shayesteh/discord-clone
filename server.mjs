@@ -14,8 +14,10 @@ app.prepare().then(() => {
 
   const io = new Server(httpServer);
 
-  io.on("connection", (socket) => {
-    // ...
+  io.on("connection", async (socket) => {
+    socket.on("test", () => {
+      io.emit("responseTest", "Hello World!");
+    });
   });
 
   httpServer

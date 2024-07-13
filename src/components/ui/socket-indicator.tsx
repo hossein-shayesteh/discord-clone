@@ -4,20 +4,18 @@ import { useSocket } from "@/src/hooks/use-socket";
 import { Badge } from "@/src/components/ui/badge";
 
 const SocketIndicator = () => {
-  const { isConnected, connect, disconnect } = useSocket();
+  const { isConnected } = useSocket();
 
   if (!isConnected)
     return (
       <Badge
-        onClick={() => disconnect()}
         variant={"outline"}
-        className={"h-5 w-5 rounded-full border-none bg-emerald-600"}
+        className={"h-5 w-5 rounded-full border-none bg-yellow-600"}
       ></Badge>
     );
 
   return (
     <Badge
-      onClick={() => connect()}
       variant={"outline"}
       className={"h-5 w-5 rounded-full border-none bg-emerald-600"}
     ></Badge>

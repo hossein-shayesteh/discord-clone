@@ -1,10 +1,19 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { socket } from "@/src/socket";
 
-export const useSocket = () => {
-  const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
+interface UseSocket {
+  isConnected: boolean;
+  connect: () => void;
+  disconnect: () => void;
+  emit: (event: string, data: any) => void;
+  subscribeToEvent: (event: string, callback: (data: any) => void) => void;
+}
+
+export const useSocket = (): UseSocket => {
+  const [isConnected, setIsConnected] = useState<boolean>(false);
+  const eventCallbacks = useRef(new Map<string, (data: any) => void>());
 
   useEffect(() => {
     const onConnect = () => {
@@ -15,12 +24,25 @@ export const useSocket = () => {
       setIsConnected(false);
     };
 
+    // Initialize the connection status
+    setIsConnected(socket.connected);
+
     socket.on("connect", onConnect);
     socket.on("disconnect", onDisconnect);
+
+    // Attach all saved event listeners
+    eventCallbacks.current.forEach((callback, event) => {
+      socket.on(event, callback);
+    });
 
     return () => {
       socket.off("connect", onConnect);
       socket.off("disconnect", onDisconnect);
+
+      // Detach all event listeners
+      eventCallbacks.current.forEach((callback, event) => {
+        socket.off(event, callback);
+      });
     };
   }, []);
 
@@ -36,12 +58,18 @@ export const useSocket = () => {
     socket.emit(event, data);
   }, []);
 
-  const on = useCallback((event: string, callback: (data: any) => void) => {
-    socket.on(event, callback);
-    return () => {
-      socket.off(event, callback);
-    };
-  }, []);
+  const subscribeToEvent = useCallback(
+    (event: string, callback: (data: any) => void) => {
+      eventCallbacks.current.set(event, callback);
+      socket.on(event, callback);
 
-  return { isConnected, connect, disconnect, emit, on };
+      return () => {
+        eventCallbacks.current.delete(event);
+        socket.off(event, callback);
+      };
+    },
+    [],
+  );
+
+  return { isConnected, connect, disconnect, emit, subscribeToEvent };
 };

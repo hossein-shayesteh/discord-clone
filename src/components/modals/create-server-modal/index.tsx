@@ -14,7 +14,7 @@ import FormSubmitButton from "@/src/components/form/FormSubmitButton";
 import FileUpload from "@/src/components/ui/fileUpload";
 import { useAction } from "@/src/hooks/use-action";
 import { createServer } from "@/src/lib/actions/create-server";
-import { useModal } from "@/src/hooks/useModal";
+import { useModal } from "@/src/hooks/use-modal";
 
 const CreateServerModal = () => {
   const formRef = useRef<ElementRef<"form">>(null);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useModal } from "@/src/hooks/useModal";
+import { useModal } from "@/src/hooks/use-modal";
 import { useAction } from "@/src/hooks/use-action";
 import { deleteServer } from "@/src/lib/actions/delete-server";
 import {

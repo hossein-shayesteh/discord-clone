@@ -6,12 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="c9ac52e0-5325-4a5d-aeed-3f67d800d249" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modals/server-members-modal/UserAvatar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/server-members-modal/UserAvatar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/socket-indicator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/socket-indicator.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hooks/use-socket.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/use-socket.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/database/fetch-channel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/database/fetch-channel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/database/fetch-servers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/database/fetch-servers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +44,7 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;npm.dev.executor&quot;: &quot;Run&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Hossein\\Documents\\discord-clone\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;http.proxy&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.grazie&quot;,
     &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Hossein\\Documents\\discord-clone\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -125,7 +123,8 @@
       <workItem from="1720291720973" duration="4811000" />
       <workItem from="1720526879225" duration="22845000" />
       <workItem from="1720612713890" duration="19994000" />
-      <workItem from="1720703007804" duration="4334000" />
+      <workItem from="1720703007804" duration="14553000" />
+      <workItem from="1720880847721" duration="5633000" />
     </task>
     <servers />
   </component>

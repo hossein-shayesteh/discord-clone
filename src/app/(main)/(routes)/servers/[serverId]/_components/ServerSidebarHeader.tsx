@@ -18,7 +18,7 @@ import {
   UserPlus,
   Users,
 } from "lucide-react";
-import { useModal } from "@/src/hooks/useModal";
+import { useModal } from "@/src/hooks/use-modal";
 
 interface ServerSidebarHeaderProps {
   role: MemberRole;

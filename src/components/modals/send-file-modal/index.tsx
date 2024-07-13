@@ -3,7 +3,7 @@
 import { ElementRef, useRef } from "react";
 import { useSocket } from "@/src/hooks/use-socket";
 import { useAction } from "@/src/hooks/use-action";
-import { useModal } from "@/src/hooks/useModal";
+import { useModal } from "@/src/hooks/use-modal";
 import { sendChannelMessage } from "@/src/lib/actions/send-channel-message";
 import {
   Dialog,

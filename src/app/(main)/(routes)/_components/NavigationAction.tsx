@@ -2,7 +2,7 @@
 
 import { Plus } from "lucide-react";
 import ActionTooltip from "@/src/components/ui/action-tooltip";
-import { useModal } from "@/src/hooks/useModal";
+import { useModal } from "@/src/hooks/use-modal";
 
 const NavigationAction = () => {
   const { onOpen } = useModal();

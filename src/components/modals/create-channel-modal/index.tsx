@@ -1,7 +1,7 @@
 "use client";
 
 import { ElementRef, useEffect, useRef, useState } from "react";
-import { useModal } from "@/src/hooks/useModal";
+import { useModal } from "@/src/hooks/use-modal";
 import { useAction } from "@/src/hooks/use-action";
 import {
   Dialog,

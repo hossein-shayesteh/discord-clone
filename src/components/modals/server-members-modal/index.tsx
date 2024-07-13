@@ -11,7 +11,7 @@ import {
   ShieldQuestion,
 } from "lucide-react";
 import { MemberRole } from "@prisma/client";
-import { useModal } from "@/src/hooks/useModal";
+import { useModal } from "@/src/hooks/use-modal";
 import { useAction } from "@/src/hooks/use-action";
 import { editRole } from "@/src/lib/actions/edit-role";
 import { ServerWithMembersWithProfiles } from "@/src/types/db";

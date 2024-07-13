@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import { useSocket } from "@/src/hooks/use-socket";
-import { useModal } from "@/src/hooks/useModal";
+import { useModal } from "@/src/hooks/use-modal";
 import { useAction } from "@/src/hooks/use-action";
 import { sendChannelMessage } from "@/src/lib/actions/send-channel-message";
 import { FormInput } from "@/src/components/form/FormInput";
