@@ -1,5 +1,4 @@
 import { redirect } from "next/navigation";
-import { format } from "date-fns";
 import { MessagesWithProfile } from "@/src/types/db";
 import { fetchCurrentMember } from "@/src/lib/database/fetch-current-member";
 import { fetchChannelMessages } from "@/src/lib/database/fetchMessages";

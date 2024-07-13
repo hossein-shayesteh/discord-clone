@@ -1,5 +1,5 @@
-import { createServer } from "node:http";
 import next from "next";
+import { createServer } from "node:http";
 import { Server } from "socket.io";
 
 const dev = process.env.NODE_ENV !== "production";
@@ -15,8 +15,8 @@ app.prepare().then(() => {
   const io = new Server(httpServer);
 
   io.on("connection", async (socket) => {
-    socket.on("test", () => {
-      io.emit("responseTest", "Hello World!");
+    socket.on("test", (data) => {
+      io.emit("testResponse", data);
     });
   });
 
