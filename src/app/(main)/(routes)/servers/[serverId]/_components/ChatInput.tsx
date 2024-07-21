@@ -34,8 +34,7 @@ const ChatInput = ({ channelId, name, serverId, type }: ChatInputProps) => {
 
   const { execute } = useAction(sendChannelMessage, {
     onSuccess: (data) => {
-      const channelKey = `chat:${data.channelId}:message`;
-      emit(channelKey, data);
+      emit("test", data);
     },
   });
 

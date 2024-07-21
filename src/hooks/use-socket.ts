@@ -8,7 +8,10 @@ interface UseSocket {
   connect: () => void;
   disconnect: () => void;
   emit: (event: string, data: any) => void;
-  subscribeToEvent: (event: string, callback: (data: any) => void) => void;
+  subscribeToEvent: (
+    event: string,
+    callback: (data: any) => void,
+  ) => () => void;
 }
 
 export const useSocket = (): UseSocket => {

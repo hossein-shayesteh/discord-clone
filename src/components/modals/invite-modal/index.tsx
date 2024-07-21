@@ -73,7 +73,7 @@ const InviteModal = () => {
             <Input
               disabled={isLoading}
               id={"invite-link"}
-              value={inviteUrl}
+              defaultValue={inviteUrl}
               className={
                 "border-0 bg-zinc-300/50 text-black focus-visible:ring-0 focus-visible:ring-offset-0"
               }

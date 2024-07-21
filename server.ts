@@ -16,7 +16,7 @@ app.prepare().then(() => {
 
   io.on("connection", async (socket) => {
     socket.on("test", (data) => {
-      io.emit("testResponse", data);
+      io.emit("test", data);
     });
   });
 

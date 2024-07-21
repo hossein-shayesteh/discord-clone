@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9ac52e0-5325-4a5d-aeed-3f67d800d249" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/loader.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatMessages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatMessages.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modals/invite-modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/invite-modal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/socket-indicator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/socket-indicator.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/use-socket.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/use-socket.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +125,9 @@
       <workItem from="1720526879225" duration="22845000" />
       <workItem from="1720612713890" duration="19994000" />
       <workItem from="1720703007804" duration="14553000" />
-      <workItem from="1720880847721" duration="9740000" />
+      <workItem from="1720880847721" duration="11465000" />
+      <workItem from="1721491315153" duration="4385000" />
+      <workItem from="1721542393768" duration="1999000" />
     </task>
     <servers />
   </component>
