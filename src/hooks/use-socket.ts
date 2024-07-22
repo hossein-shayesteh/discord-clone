@@ -27,14 +27,16 @@ export const useSocket = (): UseSocket => {
       setIsConnected(false);
     };
 
+    // Capture the current value of eventCallbacks.current
+    const currentEventCallbacks = eventCallbacks.current;
+
     // Initialize the connection status
     setIsConnected(socket.connected);
 
     socket.on("connect", onConnect);
     socket.on("disconnect", onDisconnect);
 
-    // Attach all saved event listeners
-    eventCallbacks.current.forEach((callback, event) => {
+    currentEventCallbacks.forEach((callback, event) => {
       socket.on(event, callback);
     });
 
@@ -42,8 +44,7 @@ export const useSocket = (): UseSocket => {
       socket.off("connect", onConnect);
       socket.off("disconnect", onDisconnect);
 
-      // Detach all event listeners
-      eventCallbacks.current.forEach((callback, event) => {
+      currentEventCallbacks.forEach((callback, event) => {
         socket.off(event, callback);
       });
     };
