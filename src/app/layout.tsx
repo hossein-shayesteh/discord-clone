@@ -8,8 +8,9 @@ import { extractRouterConfig } from "uploadthing/server";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { ourFileRouter } from "@/src/app/api/uploadthing/core";
 import { cn } from "@/src/lib/utils";
-import { ThemeProvider } from "@/src/components/providers/ThemeProvider";
-import ModalProvider from "@/src/components/providers/ModalProvider";
+import { ThemeProvider } from "@/src/components/providers/theme-provider";
+import ModalProvider from "@/src/components/providers/modal-provider";
+import QueryProvider from "@/src/components/providers/query-provider";
 
 const openSans = Open_Sans({ subsets: ["latin"] });
 
@@ -25,20 +26,26 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en" suppressHydrationWarning>
-        <body className={cn(openSans.className, "bg-white dark:bg-[#313338]")}>
-          <ThemeProvider
-            attribute={"class"}
-            defaultTheme={"dark"}
-            enableSystem={false}
-            storageKey={"discord-theme"}
+      <QueryProvider>
+        <html lang="en" suppressHydrationWarning>
+          <body
+            className={cn(openSans.className, "bg-white dark:bg-[#313338]")}
           >
-            <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
-            {children}
-            <ModalProvider />
-          </ThemeProvider>
-        </body>
-      </html>
+            <ThemeProvider
+              attribute={"class"}
+              defaultTheme={"dark"}
+              enableSystem={false}
+              storageKey={"discord-theme"}
+            >
+              <NextSSRPlugin
+                routerConfig={extractRouterConfig(ourFileRouter)}
+              />
+              {children}
+              <ModalProvider />
+            </ThemeProvider>
+          </body>
+        </html>
+      </QueryProvider>
     </ClerkProvider>
   );
 }

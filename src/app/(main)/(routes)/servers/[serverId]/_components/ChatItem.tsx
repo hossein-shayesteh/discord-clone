@@ -49,10 +49,13 @@ const ChatItem = ({
   serverId,
   currentMember,
 }: ChatItemProps) => {
+  const createdAtDate = new Date(createdAt);
+  const updatedAtDate = new Date(updatedAt);
+
   const [isEditing, setIsEditing] = useState(false);
   const [isDeleted, setIsDeleted] = useState(deleted);
   const [isUpdated, setIsUpdated] = useState(
-    updatedAt.getTime() !== createdAt.getTime(),
+    createdAtDate.getTime() !== updatedAtDate.getTime(),
   );
   const [messageContent, setMessageContent] = useState(content);
 

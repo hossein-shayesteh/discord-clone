@@ -5,12 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9ac52e0-5325-4a5d-aeed-3f67d800d249" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/api/currentMember/[serverId]/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/api/message/[channelId]/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/providers/query-provider.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatInput.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modals/invite-modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/invite-modal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/socket-indicator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/socket-indicator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/use-socket.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/use-socket.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatMessages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatMessages.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/providers/ModalProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/providers/modal-provider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/providers/ThemeProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/providers/theme-provider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/utils.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,11 +64,11 @@
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(main)\(routes)\test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\api\currentMember\[serverId]" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\components\ui" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(invite)\(routes)\invite\[inviteCode]" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(main)\(routes)\_components" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(setup)" />
-      <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(main)\(routes)" />
     </key>
   </component>
   <component name="RunManager">
@@ -127,7 +133,8 @@
       <workItem from="1720703007804" duration="14553000" />
       <workItem from="1720880847721" duration="11465000" />
       <workItem from="1721491315153" duration="4385000" />
-      <workItem from="1721542393768" duration="1999000" />
+      <workItem from="1721542393768" duration="8686000" />
+      <workItem from="1721632495489" duration="4635000" />
     </task>
     <servers />
   </component>
