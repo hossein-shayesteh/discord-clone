@@ -1,6 +1,7 @@
 import next from "next";
 import { createServer } from "node:http";
 import { Server } from "socket.io";
+import { Message } from "@prisma/client";
 
 const dev = process.env.NODE_ENV !== "production";
 const hostname = "localhost";
@@ -15,8 +16,8 @@ app.prepare().then(() => {
   const io = new Server(httpServer);
 
   io.on("connection", async (socket) => {
-    socket.on("test", (data) => {
-      io.emit("test", data);
+    socket.on("message", (data: Message) => {
+      io.emit(`message:${data.channelId}`, data);
     });
   });
 

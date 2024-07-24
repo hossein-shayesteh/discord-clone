@@ -1,12 +1,14 @@
 "use client";
 
+import { useEffect } from "react";
+import { Member, Message } from "@prisma/client";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { Loader2 } from "lucide-react";
+import { useSocket } from "@/src/hooks/use-socket";
 import { MessagesWithProfile } from "@/src/types/db";
+import { fetcher } from "@/src/lib/utils";
 import ChatWelcome from "@/src/app/(main)/(routes)/servers/[serverId]/_components/ChatWelcome";
 import ChatItem from "@/src/app/(main)/(routes)/servers/[serverId]/_components/ChatItem";
-import { useQuery } from "@tanstack/react-query";
-import { fetcher } from "@/src/lib/utils";
-import { Member } from "@prisma/client";
-import { Loader2 } from "lucide-react";
 
 interface ChatMessagesProps {
   name: string;
@@ -16,6 +18,9 @@ interface ChatMessagesProps {
 }
 
 const ChatMessages = ({ name, type, chatId, serverId }: ChatMessagesProps) => {
+  const { subscribeToEvent } = useSocket();
+  const queryClient = useQueryClient();
+
   const { data: currentMember, isLoading: isCurrentMemberLoading } =
     useQuery<Member>({
       queryKey: ["current-member", serverId],
@@ -28,6 +33,20 @@ const ChatMessages = ({ name, type, chatId, serverId }: ChatMessagesProps) => {
     queryKey: ["messages", chatId],
     queryFn: () => fetcher(`/api/message/${chatId}`),
   });
+
+  // This useEffect hook sets up a subscription to a Socket.IO message event for the current chatId.
+  // When a new message is received, it triggers an invalidation of the query for messages associated with the current chatId
+  useEffect(() => {
+    const unsubscribe = subscribeToEvent(
+      `message:${chatId}`,
+      async (data: Message) => {
+        await queryClient.invalidateQueries({ queryKey: ["messages", chatId] });
+      },
+    );
+    return () => {
+      unsubscribe();
+    };
+  }, [subscribeToEvent, chatId, queryClient]);
 
   if (isCurrentMemberLoading || isMessagesLoading) {
     return (
