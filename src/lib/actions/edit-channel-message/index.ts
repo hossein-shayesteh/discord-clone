@@ -1,6 +1,5 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
 import { auth } from "@clerk/nextjs/server";
 import { db } from "@/src/lib/database/db";
 import {
@@ -81,9 +80,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     // Return error if action fails
     return { error: "Failed to edit" };
   }
-
-  // Revalidating the cache for path
-  revalidatePath(`/servers/${serverId}`);
 
   // Return created server data upon success
   return { data: message };

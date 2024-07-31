@@ -64,7 +64,7 @@ const ChatMessages = ({ name, type, chatId, serverId }: ChatMessagesProps) => {
         <div className={"mt-auto flex flex-col-reverse"}>
           {messages?.map((message: MessagesWithProfile) => (
             <ChatItem
-              key={message.id}
+              key={`${message.id + message.updatedAt}`}
               serverId={serverId}
               currentMember={currentMember}
               message={message}

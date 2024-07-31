@@ -80,8 +80,7 @@ const ChatItem = ({
       setIsUpdated(true);
       setMessageContent(data.content);
 
-      const updateKey = `chat:${data.channelId}:message:update`;
-      emit(updateKey, data);
+      emit("message", data);
     },
   });
 
@@ -90,8 +89,7 @@ const ChatItem = ({
       setIsDeleted(true);
       setMessageContent(data.content);
 
-      const updateKey = `chat:${data.channelId}:message:update`;
-      emit(updateKey, data);
+      emit("message", data);
     },
   });
 
