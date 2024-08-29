@@ -33,8 +33,7 @@ const ChatMessages = ({ name, type, chatId, serverId }: ChatMessagesProps) => {
   const { data: currentMember, isLoading: isCurrentMemberLoading } =
     useQuery<Member>({
       queryKey: ["current-member", serverId],
-      queryFn: ({ pageParam }) =>
-        fetcher(`/api/message/${chatId}?cursor=${pageParam}`),
+      queryFn: () => fetcher(`/api/currentMember/${serverId}`),
     });
 
   const {
@@ -53,7 +52,7 @@ const ChatMessages = ({ name, type, chatId, serverId }: ChatMessagesProps) => {
     initialPageParam: undefined,
   });
 
-  console.log(data);
+  console.log(currentMember);
 
   // This useEffect hook sets up a subscription to a Socket.IO message event for the current chatId.
   // When a new message is received, it triggers an invalidation of the query for messages associated with the current chatId
