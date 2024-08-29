@@ -1,6 +1,7 @@
 "use client";
 
 import { ElementRef, useEffect, useRef, useState } from "react";
+
 import { Member } from "@prisma/client";
 import {
   useQuery,
@@ -51,8 +52,6 @@ const ChatMessages = ({ name, type, chatId, serverId }: ChatMessagesProps) => {
     getNextPageParam: (lastPage) => lastPage.nextCursor,
     initialPageParam: undefined,
   });
-
-  console.log(currentMember);
 
   // This useEffect hook sets up a subscription to a Socket.IO message event for the current chatId.
   // When a new message is received, it triggers an invalidation of the query for messages associated with the current chatId

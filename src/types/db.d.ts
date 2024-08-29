@@ -13,3 +13,5 @@ export type ConversationWithProfile = Conversation & {
 export type MessagesWithProfile = Message & {
   member: Member & { profile: Profile };
 };
+
+export type MemberWithProfile = Member & { profile: Profile };

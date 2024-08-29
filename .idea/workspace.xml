@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9ac52e0-5325-4a5d-aeed-3f67d800d249" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/api/server/[serverId]/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/skeleton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatMessages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatMessages.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerMember.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerMember.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerSidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/db.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/db.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -2,13 +2,14 @@
 
 import React from "react";
 import { useRouter, useParams } from "next/navigation";
-import { Member, MemberRole, Profile, Server } from "@prisma/client";
+import { MemberRole, Server } from "@prisma/client";
 import { ShieldAlert, ShieldCheck } from "lucide-react";
 import { cn } from "@/src/lib/utils";
 import UserAvatar from "@/src/components/modals/server-members-modal/UserAvatar";
+import { MemberWithProfile } from "@/src/types/db";
 
 interface ServerMemberProps {
-  member: Member & { profile: Profile };
+  member: MemberWithProfile;
   server: Server;
 }
 
