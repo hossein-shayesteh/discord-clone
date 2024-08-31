@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9ac52e0-5325-4a5d-aeed-3f67d800d249" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/api/server/[serverId]/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/skeleton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatMessages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatMessages.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerMember.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerMember.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ServerSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/db.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/db.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modals/create-channel-modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/create-channel-modal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modals/delete-channel-modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/delete-channel-modal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modals/edit-channel-modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/edit-channel-modal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/actions/create-channel/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/actions/create-channel/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/actions/delete-channel/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/actions/delete-channel/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/actions/edit-channel/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/actions/edit-channel/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +23,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;hossein-shayesteh&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/hossein-shayesteh/discord-clone.git&quot;,
+    &quot;accountId&quot;: &quot;bc572eb1-568a-482f-b5f1-1e491869628c&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 8
@@ -86,7 +100,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.17011.90" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-WS-242.20224.426" />
       </set>
     </attachedChunks>
   </component>
@@ -135,6 +149,8 @@
       <workItem from="1721800884208" duration="5904000" />
       <workItem from="1722439728145" duration="3953000" />
       <workItem from="1722492316168" duration="11101000" />
+      <workItem from="1724955873963" duration="217000" />
+      <workItem from="1725117616916" duration="3503000" />
     </task>
     <servers />
   </component>

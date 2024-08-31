@@ -1,9 +1,9 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
 import { auth } from "@clerk/nextjs/server";
 import { MemberRole } from "@prisma/client";
 import { db } from "@/src/lib/database/db";
+
 import { InputType, ReturnType } from "@/src/lib/actions/delete-channel/types";
 import { deleteChannelSchema } from "@/src/lib/actions/delete-channel/schema";
 import createSafeAction from "@/src/lib/actions/create-safe-action";
@@ -62,9 +62,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     // Return error if action fails
     return { error: "Failed to delete" };
   }
-
-  // Revalidating the cache for path
-  revalidatePath(`/servers/${server.id}`);
 
   // Return created server data upon success
   return { data: server };

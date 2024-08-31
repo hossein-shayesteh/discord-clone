@@ -1,8 +1,17 @@
 "use client";
 
 import { ElementRef, useEffect, useRef, useState } from "react";
+
 import { useModal } from "@/src/hooks/use-modal";
 import { useAction } from "@/src/hooks/use-action";
+import { useSocket } from "@/src/hooks/use-socket";
+import { Channel, ChannelType } from "@prisma/client";
+import { ServerWithMembersWithProfiles } from "@/src/types/db";
+import { editChannel } from "@/src/lib/actions/edit-channel";
+
+import { Label } from "@/src/components/ui/label";
+import { FormInput } from "@/src/components/form/FormInput";
+import FormSubmitButton from "@/src/components/form/FormSubmitButton";
 import {
   Dialog,
   DialogContent,
@@ -18,17 +27,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/src/components/ui/select";
-import { FormInput } from "@/src/components/form/FormInput";
-import FormSubmitButton from "@/src/components/form/FormSubmitButton";
-import { Label } from "@/src/components/ui/label";
-import { ServerWithMembersWithProfiles } from "@/src/types/db";
-import { Channel, ChannelType } from "@prisma/client";
-import { editChannel } from "@/src/lib/actions/edit-channel";
 
 const EditChannelModal = () => {
   const [channelType, setChannelType] = useState<"TEXT" | "AUDIO" | "VIDEO">(
     "TEXT",
   );
+
+  const { emit } = useSocket();
 
   const formRef = useRef<ElementRef<"form">>(null);
 
@@ -50,7 +55,8 @@ const EditChannelModal = () => {
 
   // Hook for executing 'editChannel' action
   const { execute, fieldErrors } = useAction(editChannel, {
-    onSuccess: () => {
+    onSuccess: (data) => {
+      emit("channel", data);
       onClose();
     },
   });

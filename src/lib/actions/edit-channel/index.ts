@@ -1,9 +1,9 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
 import { auth } from "@clerk/nextjs/server";
 import { db } from "@/src/lib/database/db";
 import { MemberRole } from "@prisma/client";
+
 import { InputType, ReturnType } from "@/src/lib/actions/edit-channel/types";
 import { editChannelSchema } from "@/src/lib/actions/edit-channel/schema";
 import createSafeAction from "@/src/lib/actions/create-safe-action";
@@ -69,9 +69,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     // Return error if action fails
     return { error: "Failed to edit" };
   }
-
-  // Revalidating the cache for path
-  revalidatePath(`/servers/${server.id}`);
 
   // Return created server data upon success
   return { data: server };

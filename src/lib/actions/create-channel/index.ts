@@ -1,12 +1,12 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
 import { auth } from "@clerk/nextjs/server";
 import { db } from "@/src/lib/database/db";
+import { MemberRole } from "@prisma/client";
+
 import { InputType, ReturnType } from "@/src/lib/actions/create-channel/types";
 import { createChannelSchema } from "@/src/lib/actions/create-channel/schema";
 import createSafeAction from "@/src/lib/actions/create-safe-action";
-import { MemberRole } from "@prisma/client";
 
 // Handler function for action
 const handler = async (data: InputType): Promise<ReturnType> => {
@@ -61,9 +61,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     // Return error if action fails
     return { error: "Failed to create" };
   }
-
-  // Revalidating the cache for path
-  revalidatePath(`/servers/${server.id}`);
 
   // Return created server data upon success
   return { data: server };

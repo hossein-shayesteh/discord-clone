@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Channel, ChannelType, MemberRole } from "@prisma/client";
 import { Hash, Mic, ShieldAlert, ShieldCheck, Video } from "lucide-react";
 
@@ -20,6 +20,7 @@ import ServerSection from "@/src/app/(main)/(routes)/servers/[serverId]/_compone
 import ServerChannel from "@/src/app/(main)/(routes)/servers/[serverId]/_components/ServerChannel";
 import ServerMember from "@/src/app/(main)/(routes)/servers/[serverId]/_components/ServerMember";
 import { Skeleton } from "@/src/components/ui/skeleton";
+import { useSocket } from "@/src/hooks/use-socket";
 
 interface ServerSidebarProps {
   serverId: string;
@@ -49,10 +50,25 @@ const roleIconMap = {
 };
 
 const ServerSidebar = ({ serverId }: ServerSidebarProps) => {
+  const { subscribeToEvent } = useSocket();
+  const queryClient = useQueryClient();
+
   const { data, isLoading, isError } = useQuery<QueryData>({
     queryKey: ["server", serverId],
     queryFn: () => fetcher(`/api/server/${serverId}`),
   });
+
+  // This useEffect hook sets up a subscription to a Socket.IO.
+  // When a new channel is created, it triggers an invalidation of the query for channel associated with the current serverId
+  useEffect(() => {
+    const unsubscribe = subscribeToEvent(`channel:${serverId}`, async () => {
+      console.log("channel changed");
+      await queryClient.invalidateQueries({ queryKey: ["server", serverId] });
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, [subscribeToEvent, serverId, queryClient]);
 
   if (isLoading) {
     return (

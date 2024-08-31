@@ -1,8 +1,16 @@
 "use client";
 
 import { ElementRef, useEffect, useRef, useState } from "react";
+
 import { useModal } from "@/src/hooks/use-modal";
 import { useAction } from "@/src/hooks/use-action";
+import { useSocket } from "@/src/hooks/use-socket";
+import { ServerWithMembersWithProfiles } from "@/src/types/db";
+import { createChannel } from "@/src/lib/actions/create-channel";
+
+import { Label } from "@/src/components/ui/label";
+import { FormInput } from "@/src/components/form/FormInput";
+import FormSubmitButton from "@/src/components/form/FormSubmitButton";
 import {
   Dialog,
   DialogContent,
@@ -18,16 +26,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/src/components/ui/select";
-import { FormInput } from "@/src/components/form/FormInput";
-import FormSubmitButton from "@/src/components/form/FormSubmitButton";
-import { createChannel } from "@/src/lib/actions/create-channel";
-import { Label } from "@/src/components/ui/label";
-import { ServerWithMembersWithProfiles } from "@/src/types/db";
 
 const CreateChannelModal = () => {
   const [channelType, setChannelType] = useState<"TEXT" | "AUDIO" | "VIDEO">(
     "TEXT",
   );
+
+  const { emit } = useSocket();
 
   const formRef = useRef<ElementRef<"form">>(null);
 
@@ -43,10 +48,10 @@ const CreateChannelModal = () => {
 
   // Hook for executing 'createChannel' action
   const { execute, fieldErrors } = useAction(createChannel, {
-    onSuccess: () => {
+    onSuccess: (data) => {
+      emit("channel", data);
       onClose();
     },
-    onError: (e) => console.log(e),
   });
 
   // Function to handle form submission

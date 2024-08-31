@@ -2,7 +2,10 @@
 
 import { useModal } from "@/src/hooks/use-modal";
 import { useAction } from "@/src/hooks/use-action";
+import { useSocket } from "@/src/hooks/use-socket";
 import { deleteChannel } from "@/src/lib/actions/delete-channel";
+
+import { Button } from "@/src/components/ui/button";
 import {
   Dialog,
   DialogTitle,
@@ -11,16 +14,18 @@ import {
   DialogContent,
   DialogDescription,
 } from "@/src/components/ui/dialog";
-import { Button } from "@/src/components/ui/button";
 
 const DeleteChannelModal = () => {
   const { isOpen, onClose, type, data } = useModal();
 
   const { server, channel } = data;
 
+  const { emit } = useSocket();
+
   // Hook for executing 'deleteChannel' action
   const { execute, isLoading } = useAction(deleteChannel, {
-    onSuccess: () => {
+    onSuccess: (data) => {
+      emit("channel", data);
       onClose();
     },
   });
