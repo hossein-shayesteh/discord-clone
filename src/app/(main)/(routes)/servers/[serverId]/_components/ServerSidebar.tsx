@@ -62,7 +62,6 @@ const ServerSidebar = ({ serverId }: ServerSidebarProps) => {
   // When a new channel is created, it triggers an invalidation of the query for channel associated with the current serverId
   useEffect(() => {
     const unsubscribe = subscribeToEvent(`channel:${serverId}`, async () => {
-      console.log("channel changed");
       await queryClient.invalidateQueries({ queryKey: ["server", serverId] });
     });
     return () => {

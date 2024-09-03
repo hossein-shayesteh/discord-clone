@@ -16,6 +16,7 @@ import { MessagesWithProfile } from "@/src/types/db";
 
 import ChatWelcome from "@/src/app/(main)/(routes)/servers/[serverId]/_components/ChatWelcome";
 import ChatItem from "@/src/app/(main)/(routes)/servers/[serverId]/_components/ChatItem";
+import { useChatScroll } from "@/src/hooks/use-chat-scroll";
 
 interface ChatMessagesProps {
   name: string;
@@ -25,8 +26,8 @@ interface ChatMessagesProps {
 }
 
 const ChatMessages = ({ name, type, chatId, serverId }: ChatMessagesProps) => {
-  const chatContainerRef = useRef<ElementRef<"div">>(null);
-  const [hasReachedTop, setHasReachedTop] = useState(false);
+  const chatRef = useRef<ElementRef<"div">>(null);
+  const bottomRef = useRef<ElementRef<"div">>(null);
 
   const { subscribeToEvent } = useSocket();
   const queryClient = useQueryClient();
@@ -53,41 +54,28 @@ const ChatMessages = ({ name, type, chatId, serverId }: ChatMessagesProps) => {
     initialPageParam: undefined,
   });
 
+  // This hook handle scroll in chat page
+  const { scrollToBottom, isNearBottom } = useChatScroll({
+    chatRef,
+    hasNextPage,
+    fetchNextPage,
+    bottomRef,
+    isFetchingNextPage,
+  });
+
   // This useEffect hook sets up a subscription to a Socket.IO message event for the current chatId.
   // When a new message is received, it triggers an invalidation of the query for messages associated with the current chatId
   useEffect(() => {
     const unsubscribe = subscribeToEvent(`message:${chatId}`, async () => {
       await queryClient.invalidateQueries({ queryKey: ["messages", chatId] });
+      if (isNearBottom) {
+        scrollToBottom();
+      }
     });
     return () => {
       unsubscribe();
     };
-  }, [subscribeToEvent, chatId, queryClient]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const container = chatContainerRef.current;
-      if (container) {
-        if (container.scrollTop === 0 && !hasReachedTop && hasNextPage) {
-          fetchNextPage().then();
-          setHasReachedTop(true);
-        } else if (container.scrollTop > 0) {
-          setHasReachedTop(false);
-        }
-      }
-    };
-
-    const container = chatContainerRef.current;
-    if (container) {
-      container.addEventListener("scroll", handleScroll);
-    }
-
-    return () => {
-      if (container) {
-        container.removeEventListener("scroll", handleScroll);
-      }
-    };
-  }, [fetchNextPage, hasNextPage, hasReachedTop]);
+  }, [subscribeToEvent, chatId, queryClient, isNearBottom, scrollToBottom]);
 
   if (isCurrentMemberLoading || isMessagesLoading) {
     return (
@@ -104,17 +92,30 @@ const ChatMessages = ({ name, type, chatId, serverId }: ChatMessagesProps) => {
   if (messages && currentMember) {
     return (
       <div
-        ref={chatContainerRef}
+        ref={chatRef}
         className={"flex flex-1 flex-col overflow-y-auto py-4"}
       >
         <div className={"flex-1"} />
-
         {!hasNextPage && <ChatWelcome type={type} name={name} />}
-        {isFetchingNextPage && (
-          <div className={"flex flex-1 items-center justify-center"}>
-            <Loader2 className={"animate-spin"} />
+        {hasNextPage && (
+          <div className={"flex justify-center"}>
+            {isFetchingNextPage ? (
+              <div className={"flex flex-1 items-center justify-center"}>
+                <Loader2 className={"animate-spin"} />
+              </div>
+            ) : (
+              <button
+                onClick={() => fetchNextPage()}
+                className={
+                  "my-4 text-xs text-zinc-500 transition hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300"
+                }
+              >
+                load previous message
+              </button>
+            )}
           </div>
         )}
+
         <div className={"mt-auto flex flex-col-reverse"}>
           {messages?.map((message: MessagesWithProfile) => (
             <ChatItem
@@ -125,6 +126,7 @@ const ChatMessages = ({ name, type, chatId, serverId }: ChatMessagesProps) => {
             />
           ))}
         </div>
+        <div ref={bottomRef} />
       </div>
     );
   }
