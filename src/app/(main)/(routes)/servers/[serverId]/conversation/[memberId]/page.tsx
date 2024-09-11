@@ -7,13 +7,21 @@ import { getOrCreateConversation } from "@/src/lib/database/conversation";
 import ChatHeader from "@/src/app/(main)/(routes)/servers/[serverId]/_components/ChatHeader";
 import ChatInput from "@/src/app/(main)/(routes)/servers/[serverId]/_components/ChatInput";
 import ChatMessages from "@/src/app/(main)/(routes)/servers/[serverId]/_components/ChatMessages";
+import MediaRoom from "@/src/components/mediaRoom/mediaRoom";
 
 interface MemberPageProps {
-  params: { memberId: string; serverId: string };
+  params: {
+    memberId: string;
+    serverId: string;
+  };
+  searchParams: {
+    video?: string;
+  };
 }
 
 const MemberPage = async ({
   params: { memberId, serverId },
+  searchParams,
 }: MemberPageProps) => {
   // Get the current user's profile
   const profile = await currentProfile();
@@ -39,18 +47,30 @@ const MemberPage = async ({
         name={otherMember.profile.name}
         imageUrl={otherMember.profile.imageUrl}
       />
-      <ChatMessages
-        type={"conversation"}
-        name={otherMember.profile.name}
-        chatId={conversation.id}
-        serverId={serverId}
-      />
-      <ChatInput
-        name={otherMember.profile.name}
-        serverId={serverId}
-        type={"conversation"}
-        conversationId={conversation.id}
-      />
+      {!searchParams.video && (
+        <>
+          <ChatMessages
+            type={"conversation"}
+            name={otherMember.profile.name}
+            chatId={conversation.id}
+            serverId={serverId}
+          />
+          <ChatInput
+            name={otherMember.profile.name}
+            serverId={serverId}
+            type={"conversation"}
+            conversationId={conversation.id}
+          />
+        </>
+      )}
+      {searchParams.video && (
+        <MediaRoom
+          chatId={conversation.id}
+          video={true}
+          audio={true}
+          serverId={serverId}
+        />
+      )}
     </div>
   );
 };
