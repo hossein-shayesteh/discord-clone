@@ -1,6 +1,6 @@
 "use client";
 
-import { ElementRef, useEffect, useRef, useState } from "react";
+import { ElementRef, useEffect, useRef } from "react";
 
 import { Member } from "@prisma/client";
 import {
@@ -13,10 +13,10 @@ import { Loader2 } from "lucide-react";
 import { fetcher } from "@/src/lib/utils";
 import { useSocket } from "@/src/hooks/use-socket";
 import { MessagesWithProfile } from "@/src/types/db";
+import { useChatScroll } from "@/src/hooks/use-chat-scroll";
 
 import ChatWelcome from "@/src/app/(main)/(routes)/servers/[serverId]/_components/ChatWelcome";
 import ChatItem from "@/src/app/(main)/(routes)/servers/[serverId]/_components/ChatItem";
-import { useChatScroll } from "@/src/hooks/use-chat-scroll";
 
 interface ChatMessagesProps {
   name: string;
@@ -38,6 +38,12 @@ const ChatMessages = ({ name, type, chatId, serverId }: ChatMessagesProps) => {
       queryFn: () => fetcher(`/api/currentMember/${serverId}`),
     });
 
+  // Conditional API endpoint based on the type prop
+  const apiEndpoint =
+    type === "channel"
+      ? `/api/message/channel/${chatId}`
+      : `/api/message/direct/${chatId}`;
+
   const {
     data,
     isLoading: isMessagesLoading,
@@ -47,9 +53,7 @@ const ChatMessages = ({ name, type, chatId, serverId }: ChatMessagesProps) => {
   } = useInfiniteQuery({
     queryKey: ["messages", chatId],
     queryFn: ({ pageParam }) =>
-      fetcher(
-        `/api/message/${chatId}${pageParam ? `?cursor=${pageParam}` : ""}`,
-      ),
+      fetcher(`${apiEndpoint}${pageParam ? `?cursor=${pageParam}` : ""}`),
     getNextPageParam: (lastPage) => lastPage.nextCursor,
     initialPageParam: undefined,
   });
@@ -126,6 +130,7 @@ const ChatMessages = ({ name, type, chatId, serverId }: ChatMessagesProps) => {
             />
           ))}
         </div>
+        {/* Bottom reference to ensure scrolling works correctly */}
         <div ref={bottomRef} />
       </div>
     );

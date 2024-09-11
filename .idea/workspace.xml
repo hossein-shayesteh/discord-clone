@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9ac52e0-5325-4a5d-aeed-3f67d800d249" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/lib/actions/send-direct-message/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/actions/send-direct-message/schema.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/actions/send-direct-message/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/api/message/direct/[conversationId]/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatInput.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/conversation/[memberId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/conversation/[memberId]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatMessages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatMessages.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/message/[channelId]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/message/channel/[channelId]/route.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,37 +43,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Hossein/Documents/discord-clone/src/lib/actions&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Hossein\\Documents\\discord-clone\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.grazie&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Hossein\\Documents\\discord-clone\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Hossein/Documents/discord-clone/src/app/api/message/direct",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Hossein\\Documents\\discord-clone\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie",
+    "ts.external.directory.path": "C:\\Users\\Hossein\\Documents\\discord-clone\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\api\message\direct" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\lib\actions" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\components\modals" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(main)\(routes)\servers\[serverId]\_components" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(main)\(routes)\test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\api\message\channel" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\api\currentMember\[serverId]" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\components\ui" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(invite)\(routes)\invite\[inviteCode]" />
       <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(main)\(routes)\_components" />
-      <recent name="C:\Users\Hossein\Documents\discord-clone\src\app\(setup)" />
     </key>
   </component>
   <component name="RunManager">
@@ -149,7 +149,7 @@
       <workItem from="1724955873963" duration="217000" />
       <workItem from="1725117616916" duration="4200000" />
       <workItem from="1725352903238" duration="7085000" />
-      <workItem from="1726055907344" duration="2325000" />
+      <workItem from="1726055907344" duration="5904000" />
     </task>
     <servers />
   </component>

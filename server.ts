@@ -1,7 +1,7 @@
 import next from "next";
 import { createServer } from "node:http";
 import { Server } from "socket.io";
-import { Message, Server as PrismaServer } from "@prisma/client";
+import { DirectMessage, Message, Server as PrismaServer } from "@prisma/client";
 
 const dev = process.env.NODE_ENV !== "production";
 const hostname = "localhost";
@@ -16,8 +16,15 @@ app.prepare().then(() => {
   const io = new Server(httpServer);
 
   io.on("connection", async (socket) => {
-    socket.on("message", (data: Message) => {
-      io.emit(`message:${data.channelId}`, data);
+    socket.on("message", (data: Message | DirectMessage) => {
+      // Check if the message is from a channel or a direct conversation
+      if ("channelId" in data) {
+        // It's a Message (channel)
+        io.emit(`message:${data.channelId}`, data);
+      } else if ("conversationId" in data) {
+        // It's a DirectMessage (direct conversation)
+        io.emit(`message:${data.conversationId}`, data);
+      }
     });
 
     socket.on("channel", (data: PrismaServer) => {

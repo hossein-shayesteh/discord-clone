@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
 import { currentUser } from "@clerk/nextjs/server";
+import { DirectMessage } from "@prisma/client";
+
 import { db } from "@/src/lib/database/db";
-import { MessagesWithProfile } from "@/src/types/db";
 
 export async function GET(
   req: Request,
-  { params: { channelId } }: { params: { channelId: string } },
+  { params: { conversationId } }: { params: { conversationId: string } },
 ) {
   try {
     const user = await currentUser();
@@ -22,17 +23,17 @@ export async function GET(
 
     if (!profile) return new NextResponse("Unauthorized", { status: 401 });
 
-    let messages: MessagesWithProfile[];
+    let directMessage: DirectMessage[];
 
     if (cursor) {
-      messages = await db.message.findMany({
+      directMessage = await db.directMessage.findMany({
         take: MESSAGE_BATCH,
         skip: 1,
         cursor: {
           id: cursor,
         },
         where: {
-          channelId,
+          conversationId,
         },
         include: {
           member: {
@@ -46,10 +47,10 @@ export async function GET(
         },
       });
     } else {
-      messages = await db.message.findMany({
+      directMessage = await db.directMessage.findMany({
         take: MESSAGE_BATCH,
         where: {
-          channelId,
+          conversationId,
         },
         include: {
           member: {
@@ -66,12 +67,12 @@ export async function GET(
 
     let nextCursor = null;
 
-    if (messages.length === MESSAGE_BATCH) {
-      nextCursor = messages[MESSAGE_BATCH - 1].id;
+    if (directMessage.length === MESSAGE_BATCH) {
+      nextCursor = directMessage[MESSAGE_BATCH - 1].id;
     }
 
     return NextResponse.json({
-      items: messages,
+      items: directMessage,
       nextCursor,
     });
   } catch (e) {
