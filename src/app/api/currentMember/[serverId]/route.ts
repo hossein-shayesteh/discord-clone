@@ -22,6 +22,9 @@ export async function GET(
         profileId: profile.id,
         serverId,
       },
+      include: {
+        profile: true,
+      },
     });
 
     return NextResponse.json(currentMember);
