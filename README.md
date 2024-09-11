@@ -11,6 +11,7 @@ Discord Clone is a replica of the popular communication platform Discord. This p
 ## Features
 - User authentication and management with Clerk
 - Real-time messaging
+- Real-time communication via video and audio
 - Theme support with Next Themes
 - Form validation with React Hook Form and Zod
 - Responsive design with Tailwind CSS
@@ -41,10 +42,20 @@ To set up this project locally, follow these steps:
 3. **Set up environment variables:**
     ```bash
     DATABASE_URL=your_database_url
+    
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_frontend_api
     CLERK_SECRET_KEY=your_clerk_secret_key
+    NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+    NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+    NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
+    NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
+    
     UPLOADTHING_SECRET=uploadthing_secret
     UPLOADTHING_APP_ID=uploadthing_app_id
+
+    LIVEKIT_API_KEY=liveKit_api_key
+    LIVEKIT_API_SECRET=liveKit_api_secret
+    NEXT_PUBLIC_LIVEKIT_URL=liveKit_url
     ```
 
 4. **Set up the database:**
