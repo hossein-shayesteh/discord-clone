@@ -1,9 +1,12 @@
-import { getOrCreateConversation } from "@/src/lib/database/conversation";
 import { redirect } from "next/navigation";
+
 import { ConversationWithProfile } from "@/src/types/db";
 import { currentProfile } from "@/src/lib/auth/current-profile";
+import { getOrCreateConversation } from "@/src/lib/database/conversation";
+
 import ChatHeader from "@/src/app/(main)/(routes)/servers/[serverId]/_components/ChatHeader";
 import ChatInput from "@/src/app/(main)/(routes)/servers/[serverId]/_components/ChatInput";
+import ChatMessages from "@/src/app/(main)/(routes)/servers/[serverId]/_components/ChatMessages";
 
 interface MemberPageProps {
   params: { memberId: string; serverId: string };
@@ -36,11 +39,17 @@ const MemberPage = async ({
         name={otherMember.profile.name}
         imageUrl={otherMember.profile.imageUrl}
       />
-      <ChatInput
-        memberId={otherMember.profileId}
-        serverId={serverId}
+      <ChatMessages
         type={"conversation"}
         name={otherMember.profile.name}
+        chatId={conversation.id}
+        serverId={serverId}
+      />
+      <ChatInput
+        name={otherMember.profile.name}
+        serverId={serverId}
+        type={"conversation"}
+        conversationId={conversation.id}
       />
     </div>
   );

@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9ac52e0-5325-4a5d-aeed-3f67d800d249" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/hooks/use-chat-scroll.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/actions/send-direct-message/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/actions/send-direct-message/schema.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/actions/send-direct-message/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatMessages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatMessages.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/_components/ChatInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/conversation/[memberId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/(routes)/servers/[serverId]/conversation/[memberId]/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +148,8 @@
       <workItem from="1722492316168" duration="11101000" />
       <workItem from="1724955873963" duration="217000" />
       <workItem from="1725117616916" duration="4200000" />
-      <workItem from="1725352903238" duration="6564000" />
+      <workItem from="1725352903238" duration="7085000" />
+      <workItem from="1726055907344" duration="2325000" />
     </task>
     <servers />
   </component>

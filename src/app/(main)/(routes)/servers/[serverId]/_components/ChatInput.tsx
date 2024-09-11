@@ -1,46 +1,56 @@
 "use client";
 
 import { useState } from "react";
+
 import { Plus } from "lucide-react";
+
 import { useSocket } from "@/src/hooks/use-socket";
 import { useModal } from "@/src/hooks/use-modal";
 import { useAction } from "@/src/hooks/use-action";
+import { sendDirectMessage } from "@/src/lib/actions/send-direct-message";
 import { sendChannelMessage } from "@/src/lib/actions/send-channel-message";
+
 import { FormInput } from "@/src/components/form/FormInput";
 import EmojiPicker from "@/src/app/(main)/(routes)/servers/[serverId]/_components/EmojiPicker";
 
 type ChatInputProps = {
   name: string;
   serverId: string;
-} & (
-  | {
-      type: "channel";
-      channelId: string;
-      memberId?: never;
-    }
-  | {
-      type: "conversation";
-      memberId: string;
-      channelId?: never;
-    }
-);
+  type: "channel" | "conversation";
+  channelId?: string;
+  conversationId?: string;
+};
 
-const ChatInput = ({ channelId, name, serverId, type }: ChatInputProps) => {
+const ChatInput = ({
+  channelId,
+  name,
+  serverId,
+  type,
+  conversationId,
+}: ChatInputProps) => {
   const [content, setContent] = useState<string>("");
 
   const { onOpen } = useModal();
 
   const { emit } = useSocket();
 
-  const { execute } = useAction(sendChannelMessage, {
+  const { execute: executeSendChannelMessage } = useAction(sendChannelMessage, {
+    onSuccess: (data) => {
+      emit("message", data);
+    },
+  });
+
+  const { execute: executeSendDirectMessage } = useAction(sendDirectMessage, {
     onSuccess: (data) => {
       emit("message", data);
     },
   });
 
   const onSubmit = async () => {
-    if (type === "channel") await execute({ channelId, serverId, content });
-    if (type === "conversation") {
+    if (type === "channel" && channelId)
+      await executeSendChannelMessage({ channelId, serverId, content });
+    if (type === "conversation" && conversationId) {
+      await executeSendDirectMessage({ serverId, content, conversationId });
     }
     setContent("");
   };
